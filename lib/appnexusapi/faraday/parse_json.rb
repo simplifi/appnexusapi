@@ -36,9 +36,9 @@ module AppnexusApi
           if env[:body].has_key?("error")
             case env[:body]["error_id"]
             when "NOAUTH"
-              raise AppnexusApi::Forbidden, error_message(env)
-            when "UNAUTH"
               raise AppnexusApi::Unauthorized, error_message(env)
+            when "UNAUTH"
+              raise AppnexusApi::Forbidden, error_message(env)
             when "SYNTAX"
               raise AppnexusApi::UnprocessableEntity, error_message(env)
             when "SYSTEM"
