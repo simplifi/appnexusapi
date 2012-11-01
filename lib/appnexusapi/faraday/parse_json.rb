@@ -45,6 +45,8 @@ module AppnexusApi
               raise AppnexusApi::InternalServerError, error_message(env)
             when "INTEGRITY"
               raise AppnexusApi::UnprocessableEntity, error_message(env)
+            else
+              raise AppnexusApi::Error, error_message(env)
             end
           end
         end
