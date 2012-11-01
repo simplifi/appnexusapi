@@ -1,5 +1,3 @@
-require "rubygems"
-require "bundler/setup"
 require "faraday"
 require "appnexusapi/version"
 require "appnexusapi/error"
