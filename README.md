@@ -24,13 +24,13 @@ Establish a connection:
       # optionally pass a uri for the staging site
       # defaults to "http://api.adnxs.com/"
       # uri => "http://api.sand-08.adnxs.net",
-      username => 'username',
-      password => 'password'
+      "username" => 'username',
+      "password" => 'password'
     })
 
 Use a Service:
 
-    member_service = AppnexusApi::MemberService(connection)
+    member_service = AppnexusApi::MemberService.new(connection)
     # get always returns an array of results
     # and defaults "num_elements" to 100 and "start_element" to 0
     # and returns an AppnexusApi::Resource object which is a wrapper around the JSON
