@@ -7,26 +7,28 @@ module AppnexusApi
         extend Forwardable
 
         def initialize(app, logger = nil)
-          super(app)
           @logger = logger || begin
             require 'logger'
             ::Logger.new(STDOUT)
           end
+          @app = app
         end
 
         def_delegators :@logger, :debug, :info, :warn, :error, :fatal
 
         def call(env)
-          info "#{env.method} #{env.url.to_s}"
-          debug('request') { dump_headers env.request_headers }
-          debug('request') { env.body }
-          super
+          info "#{env[:method]} #{env[:url].to_s}"
+          debug('request') { dump_headers env[:request_headers] }
+          debug('request') { env[:body].to_s }
+          @app.call(env).on_complete do |environment|
+            on_complete(environment)
+          end
         end
 
         def on_complete(env)
-          info('Status') { env.status.to_s }
-          debug('response') { dump_headers env.response_headers }
-          debug('response') { env.body }
+          info('Status') { env[:status].to_s }
+          debug('response') { dump_headers env[:response_headers] }
+          debug('response body') { env[:body].to_s }
         end
 
         private
