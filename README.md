@@ -27,7 +27,7 @@ Establish a connection:
 
       # Defaults to connecting to https://api.appnexus.com/ but you can optionally pass a uri to
       # connect to another endpoint, e.g. the staging site could be
-      # uri: 'http://api.sand-08.adnxs.net
+      # "uri" => 'http://api-test.appnexus.com',
 
       
     )
@@ -40,7 +40,27 @@ Use a Service:
     # and returns an AppnexusApi::Resource object which is a wrapper around the JSON
     member = member_service.get.first
 
-    creative_service = AppnexusApi::CreativeService.new(connection, member.id)
+    line_item_service = AppnexusApi::LineItemService.new(connection)
+    line_item = line_item_service.get.first
+    line_item = line_item_service.get({advertiser_id: 12345}).first
+
+    # create a new object
+    url_params  = { advertiser_id: 12345 }
+    body_params = { name: "some line item", code: "line item code"}
+
+    line_item = line_item_service.create(url_params, body_params)
+    line_item.state
+
+
+    # update an object
+    update_params = { state: "inactive" }
+    json_result = line_item.update(url_params, update_params)
+
+    # delete an object
+    line_item.delete(url_params)
+
+    # this raises an AppnexusApi::UnprocessableEntity, not a 404 as it should
+    line_item_service.get(line_item.id)
 
     new_creative = {
       "content"   => "<iframe src='helloword.html'></iframe>",
@@ -60,6 +80,7 @@ There is a rudimentary test suite that centers around creatives/creative_service
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Make changes (with tests -- at least integration tests, please)
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
