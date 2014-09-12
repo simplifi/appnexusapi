@@ -44,7 +44,11 @@ class AppnexusApi::Connection
 
   def get(route, params={}, headers={})
     params = params.delete_if {|key, value| value.nil? }
-    run_request(:get, @connection.build_url(route, params), nil, headers)
+    run_request(:get, build_url(route, params), nil, headers)
+  end
+
+  def build_url(route, params)
+    @connection.build_url(route, params)
   end
 
   def post(route, body=nil, headers={})

@@ -61,10 +61,11 @@ class AppnexusApi::Service
     responses
   end
 
-  def create(attributes={})
+  def create(route_params={}, body={})
     raise(AppnexusApi::NotImplemented, "Service is read-only.") if @read_only
-    attributes = { name => attributes }
-    response = @connection.post(uri_suffix, attributes).body['response']
+    body = { uri_name => body }
+    route = @connection.build_url(uri_suffix, route_params)
+    response = @connection.post(route, body).body['response']
     if response['error_id']
       response.delete('dbg')
       raise AppnexusApi::BadRequest.new(response.inspect)
@@ -72,10 +73,11 @@ class AppnexusApi::Service
     parse_response(response).first
   end
 
-  def update(id, attributes={})
+  def update(id, route_params={}, body={})
     raise(AppnexusApi::NotImplemented, "Service is read-only.") if @read_only
-    attributes = { name => attributes }
-    response = @connection.put([uri_suffix, id].join('/'), attributes).body['response']
+    body = { uri_name => body }
+    route = @connection.build_url(uri_suffix, route_params.merge("id" => id))
+    response = @connection.put(route, body).body['response']
     if response['error_id']
       response.delete('dbg')
       raise AppnexusApi::BadRequest.new(response.inspect)
@@ -83,9 +85,10 @@ class AppnexusApi::Service
     parse_response(response).first
   end
 
-  def delete(id)
+  def delete(id, route_params)
     raise(AppnexusApi::NotImplemented, "Service is read-only.") if @read_only
-    @connection.delete([uri_suffix, id].join('/')).body['response']
+    route = @connection.build_url(uri_suffix, route_params.merge("id" => id))
+    @connection.delete(route).body['response']
   end
 
   def parse_response(response)
