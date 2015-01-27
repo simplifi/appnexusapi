@@ -12,7 +12,7 @@ describe "profile service" do
     # create a profile
     profile_url_params = { :advertiser_id => @advertiser_id }
     profile_params = {
-      :code => "profile_code_#{Time.now.to_i}_#{rand(9_000_000)}",
+      :code => "spec_profile_code_#{Time.now.to_i}_#{rand(9_000_000)}",
       :description => "Targeting only the US",
       :country_targets => [ { :country => "US" } ],
       :country_action  => "include"
@@ -29,7 +29,7 @@ describe "profile service" do
 
     new_line_item_params = {
       name: "some line item #{rand(100_000)}",
-      code: "somecode #{rand(100_000)}",
+      code: "spec_line_code_#{rand(100_000)}",
       profile_id: profile.id
     }
 

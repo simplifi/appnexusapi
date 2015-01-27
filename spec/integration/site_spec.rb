@@ -10,7 +10,7 @@ describe "AppNexus Site" do
   it "site life cycle" do
 
     # have to create a publisher first
-    code = "this_is_a_pub_code_#{Time.now.to_i}_#{rand(9_000_000)}"
+    code = "spec_pub_code_#{Time.now.to_i}_#{rand(9_000_000)}"
     new_publisher_url_params = { create_default_placement: false }
     new_publisher_params = {
       name: "Publisher Name",
@@ -25,7 +25,7 @@ describe "AppNexus Site" do
 
 
     # now create the site
-    code = "this_is_a_site_code_#{Time.now.to_i}_#{rand(9_000_000)}"
+    code = "spec_site_code_#{Time.now.to_i}_#{rand(9_000_000)}"
     new_site_url_params = { publisher_id: publisher.id }
     new_site_params = {
       name: "Site Name",

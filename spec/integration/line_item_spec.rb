@@ -19,7 +19,7 @@ describe "line items" do
 
     new_line_item_params = {
       name: "some line item #{rand(100_000)}",
-      code: "somecode #{rand(100_000)}"
+      code: "spec_line_code_#{rand(100_000)}"
     }
 
     new_line_item = @line_item_service.create new_line_item_url_params, new_line_item_params

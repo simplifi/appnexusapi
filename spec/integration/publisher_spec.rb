@@ -7,7 +7,7 @@ describe "AppNexus Publisher" do
   end
 
   it "publisher life cycle" do
-    code = "this_is_a_code_#{Time.now.to_i}_#{rand(9_000_000)}"
+    code = "spec_code_#{Time.now.to_i}_#{rand(9_000_000)}"
     new_publisher_params = {
       name: "Publisher Name",
       code: code,

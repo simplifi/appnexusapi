@@ -11,7 +11,7 @@ describe "AppNexus Site" do
   it "default placement" do
 
     # have to create a publisher first
-    code = "this_is_a_pub_code_#{Time.now.to_i}_#{rand(9_000_000)}"
+    code = "spec_pub_code_#{Time.now.to_i}_#{rand(9_000_000)}"
     # new_publisher_url_params = { create_default_placement: true }
     new_publisher_url_params = { }
     new_publisher_params = {
