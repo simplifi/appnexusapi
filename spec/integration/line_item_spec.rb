@@ -10,7 +10,7 @@ describe "line items" do
   it "line item life cycle" do
 
     # get all the line items
-    @line_items = @line_item_service.get
+    @line_items = @line_item_service.get(advertiser_id: @advertiser_id)
 
     # create a new line item
     new_line_item_url_params = {
@@ -25,7 +25,7 @@ describe "line items" do
     new_line_item = @line_item_service.create new_line_item_url_params, new_line_item_params
     ids = @line_items.map(&:id)
     ids << new_line_item.id
-    @line_item_service.get.map(&:id).sort.should == ids.sort
+    @line_item_service.get(advertiser_id: @advertiser_id).map(&:id).sort.should == ids.sort
 
     # update a line item
     new_line_item.state.should == "active"
