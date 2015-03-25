@@ -1,15 +1,12 @@
-require 'appnexusapi/faraday/encode_json'
-require 'appnexusapi/faraday/parse_json'
-require 'appnexusapi/faraday/raise_http_error'
+require 'faraday_middleware'
 
 class AppnexusApi::Connection
   def initialize(config)
-    config["uri"] = "http://api.adnxs.com/" unless config.has_key?("uri")
     @config = config
-    @connection = Faraday::Connection.new(:url => config["uri"]) do |builder|
-      builder.use AppnexusApi::Faraday::Request::JsonEncode
-      builder.use AppnexusApi::Faraday::Response::RaiseHttpError
-      builder.use AppnexusApi::Faraday::Response::ParseJson
+    @config["uri"] ||= "http://api.adnxs.com/"
+    @connection = Faraday::Connection.new(:url => @config["uri"]) do |builder|
+      builder.use FaradayMiddleware::EncodeJson
+      builder.use FaradayMiddleware::ParseJson
       builder.adapter Faraday.default_adapter
     end
   end
@@ -20,7 +17,7 @@ class AppnexusApi::Connection
 
   def login
     response = @connection.run_request(:post, 'auth', { "auth" => { "username" => @config["username"], "password" => @config["password"] } }, {})
-    @token = response.body["token"]
+    @token = response.body["response"]["token"]
   end
 
   def logout
@@ -29,19 +26,19 @@ class AppnexusApi::Connection
 
   def get(route, params={}, headers={})
     params = params.delete_if {|key, value| value.nil? }
-    run_request(:get, @connection.build_url(route, params), nil, headers).body
+    run_request(:get, @connection.build_url(route, params), nil, headers).body['response']
   end
 
   def post(route, body=nil, headers={})
-    run_request(:post, route, body, headers).body
+    run_request(:post, route, body, headers).body['response']
   end
 
   def put(route, body=nil, headers={})
-    run_request(:put, route, body, headers).body
+    run_request(:put, route, body, headers).body['response']
   end
 
   def delete(route, body=nil, headers={})
-    run_request(:delete, route, body, headers).body
+    run_request(:delete, route, body, headers).body['response']
   end
 
   def run_request(method, route, body, headers)
