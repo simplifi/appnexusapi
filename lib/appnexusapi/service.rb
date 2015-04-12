@@ -21,15 +21,15 @@ class AppnexusApi::Service
       AppnexusApi.const_get(resource_name + "Resource")
     end
   end
-  
+
   def uri_name
     name.gsub('_', '-')
   end
-  
+
   def plural_uri_name
     uri_name + 's'
   end
-  
+
   def uri_suffix
     uri_name
   end
