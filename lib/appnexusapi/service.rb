@@ -58,6 +58,10 @@ class AppnexusApi::Service
     raise(AppnexusApi::NotImplemented, "Service is read-only.") if @read_only
     attributes = { name => attributes }
     response = @connection.post(uri_suffix, attributes)
+    if response['error_id']
+      response.delete('dbg')
+      raise AppnexusApi::BadRequest.new(response.inspect)
+    end
     get("id" => response["id"]).first
   end
 
@@ -65,6 +69,10 @@ class AppnexusApi::Service
     raise(AppnexusApi::NotImplemented, "Service is read-only.") if @read_only
     attributes = { name => attributes }
     response = @connection.put([uri_suffix, id].join('/'), attributes)
+    if response['error_id']
+      response.delete('dbg')
+      raise AppnexusApi::BadRequest.new(response.inspect)
+    end
     get("id" => response["id"]).first
   end
 

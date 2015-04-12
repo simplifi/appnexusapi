@@ -1,4 +1,5 @@
 require 'faraday_middleware'
+require 'appnexusapi/faraday/raise_http_error'
 
 class AppnexusApi::Connection
   def initialize(config)
@@ -7,6 +8,7 @@ class AppnexusApi::Connection
     @connection = Faraday::Connection.new(:url => @config["uri"]) do |builder|
       builder.use FaradayMiddleware::EncodeJson
       builder.use FaradayMiddleware::ParseJson
+      builder.use AppnexusApi::Faraday::Response::RaiseHttpError
       builder.adapter Faraday.default_adapter
     end
   end
