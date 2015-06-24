@@ -9,4 +9,7 @@ class AppnexusApi::ContentCategoryService < AppnexusApi::Service
     "content_categories"
   end
 
+  def plural_uri_name
+    "content-categories"
+  end
 end
