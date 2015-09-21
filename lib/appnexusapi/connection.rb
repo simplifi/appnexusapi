@@ -6,6 +6,10 @@ class AppnexusApi::Connection
     @config = config
     @config["uri"] ||= "http://api.adnxs.com/"
     @connection = Faraday::Connection.new(:url => @config["uri"]) do |builder|
+      if ENV['APPNEXUS_API_DEBUG'].to_s =~ /^(true|1)$/i
+        builder.response :logger, Logger.new(STDERR), bodies: true
+      end
+
       builder.use FaradayMiddleware::EncodeJson
       builder.use FaradayMiddleware::ParseJson
       builder.use AppnexusApi::Faraday::Response::RaiseHttpError
@@ -19,6 +23,9 @@ class AppnexusApi::Connection
 
   def login
     response = @connection.run_request(:post, 'auth', { "auth" => { "username" => @config["username"], "password" => @config["password"] } }, {})
+    if response.body['response']['error_code']
+      fail "#{response.body['response']['error_code']}/#{response.body['response']['error_description']}"
+    end
     @token = response.body["response"]["token"]
   end
 
