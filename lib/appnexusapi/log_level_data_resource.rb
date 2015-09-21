@@ -1,2 +1,2 @@
-class AppnexusApi::SiphonResource < AppnexusApi::Resource
+class AppnexusApi::LogLevelDataResource < AppnexusApi::Resource
 end

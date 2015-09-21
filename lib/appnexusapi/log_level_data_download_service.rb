@@ -1,4 +1,4 @@
-class AppnexusApi::SiphonDownloadService < AppnexusApi::Service
+class AppnexusApi::LogLevelDataDownloadService < AppnexusApi::Service
   def initialize(connection)
     @read_only = true
     super
