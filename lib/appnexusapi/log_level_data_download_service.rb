@@ -48,12 +48,12 @@ class AppnexusApi::LogLevelDataDownloadService < AppnexusApi::Service
     http_object.use_ssl = true if uri.scheme == 'https'
     begin
       http_object.start do |http|
-        request = Net::HTTP::Get.new uri.request_uri
+        request = Net::HTTP::Get.new(uri.request_uri)
         http.read_timeout = 500
-        http.request request do |response|
-          open filename, 'wb' do |io|
+        http.request(request) do |response|
+          open(filename, 'wb') do |io|
             response.read_body do |chunk|
-              io.write chunk
+              io.write(chunk)
             end
           end
         end
