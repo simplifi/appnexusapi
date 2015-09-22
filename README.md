@@ -21,8 +21,8 @@ Or install it yourself as:
 Establish a connection:
 
     connection = AppnexusApi::Connection.new(
-      "username" => 'username',
-      "password" => 'password'
+      'username' => 'username',
+      'password' => 'password'
 
       # Defaults to connecting to https://api.appnexus.com/ but you can optionally pass a uri to
       # connect to another endpoint, e.g. the staging site could be
