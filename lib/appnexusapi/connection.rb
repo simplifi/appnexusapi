@@ -4,7 +4,7 @@ require 'appnexusapi/faraday/raise_http_error'
 class AppnexusApi::Connection
   def initialize(config)
     @config = config
-    @config["uri"] ||= "http://api.adnxs.com/"
+    @config["uri"] ||= "https://api.appnexus.com/"
     @connection = Faraday::Connection.new(:url => @config["uri"]) do |builder|
       if ENV['APPNEXUS_API_DEBUG'].to_s =~ /^(true|1)$/i
         builder.response :logger, Logger.new(STDERR), bodies: true
@@ -35,19 +35,19 @@ class AppnexusApi::Connection
 
   def get(route, params={}, headers={})
     params = params.delete_if {|key, value| value.nil? }
-    run_request(:get, @connection.build_url(route, params), nil, headers).body['response']
+    run_request(:get, @connection.build_url(route, params), nil, headers)
   end
 
   def post(route, body=nil, headers={})
-    run_request(:post, route, body, headers).body['response']
+    run_request(:post, route, body, headers)
   end
 
   def put(route, body=nil, headers={})
-    run_request(:put, route, body, headers).body['response']
+    run_request(:put, route, body, headers)
   end
 
   def delete(route, body=nil, headers={})
-    run_request(:delete, route, body, headers).body['response']
+    run_request(:delete, route, body, headers)
   end
 
   def run_request(method, route, body, headers)
