@@ -47,6 +47,16 @@ Use a Service:
     creative = creative_service.create(new_creative)
     creative.update("campaign" => "Testing")
 
+## Debugging
+
+The APPNEXUS_API_DEBUG environment variable will trigger full printouts of Faraday's debug output to STDERR.
+
+```bash
+cd /my/app
+export LEANPLUM_API_DEBUG=true
+bundle exec rails whatever
+```
+
 ## Contributing
 
 1. Fork it

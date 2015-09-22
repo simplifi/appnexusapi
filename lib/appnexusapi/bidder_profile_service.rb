@@ -1,4 +1,4 @@
-class AppnexusApi::BidderProfileResource < AppnexusApi::Service
+class AppnexusApi::BidderProfileService < AppnexusApi::Service
 
   def initialize(connection, bidder_id)
     @bidder_id = bidder_id
@@ -14,7 +14,7 @@ class AppnexusApi::BidderProfileResource < AppnexusApi::Service
   end
 
   def uri_suffix
-    "bidder-profile/#{@bidder_id}"
+    "profile/#{@bidder_id}"
   end
 
   def delete(id)
