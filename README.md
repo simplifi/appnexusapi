@@ -53,7 +53,7 @@ The APPNEXUS_API_DEBUG environment variable will trigger full printouts of Farad
 
 ```bash
 cd /my/app
-export LEANPLUM_API_DEBUG=true
+export APPNEXUS_API_DEBUG=true
 bundle exec rails whatever
 ```
 
