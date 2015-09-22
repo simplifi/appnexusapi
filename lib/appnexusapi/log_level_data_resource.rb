@@ -7,7 +7,8 @@ class AppnexusApi::LogLevelDataResource < AppnexusApi::Resource
         split_part: split_part['part'],
         siphon_name: name,
         timestamp: timestamp,
-        hour: hour
+        hour: hour,
+        checksum: split_part['checksum']
       }
     end
   end
