@@ -20,13 +20,14 @@ Or install it yourself as:
 
 Establish a connection:
 
-    connection = AppnexusApi::Connection.new({
-      # optionally pass a uri for the staging site
-      # defaults to "http://api.adnxs.com/"
-      # uri => "http://api.sand-08.adnxs.net",
+    connection = AppnexusApi::Connection.new(
       "username" => 'username',
       "password" => 'password'
-    })
+
+      # Defaults to connecting to https://api.appnexus.com/ but you can optionally pass a uri to
+      # connect to another endpoint, e.g. the staging site could be
+      # uri: 'http://api.sand-08.adnxs.net'
+    )
 
 Use a Service:
 
