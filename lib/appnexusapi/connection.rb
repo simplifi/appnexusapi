@@ -4,16 +4,16 @@ require 'appnexusapi/faraday/raise_http_error'
 class AppnexusApi::Connection
   def initialize(config)
     @config = config
-    @config["uri"] ||= "https://api.appnexus.com/"
-    @connection = Faraday::Connection.new(:url => @config["uri"]) do |builder|
+    @config['uri'] ||= 'https://api.appnexus.com/'
+    @connection = Faraday.new(@config['uri']) do |conn|
       if ENV['APPNEXUS_API_DEBUG'].to_s =~ /^(true|1)$/i
-        builder.response :logger, Logger.new(STDERR), bodies: true
+        conn.response :logger, Logger.new(STDERR), bodies: true
       end
 
-      builder.use FaradayMiddleware::EncodeJson
-      builder.use FaradayMiddleware::ParseJson
-      builder.use AppnexusApi::Faraday::Response::RaiseHttpError
-      builder.adapter Faraday.default_adapter
+      conn.request :json
+      conn.response :json, :content_type => /\bjson$/
+      conn.use AppnexusApi::Faraday::Response::RaiseHttpError
+      conn.adapter Faraday.default_adapter
     end
   end
 
@@ -22,11 +22,11 @@ class AppnexusApi::Connection
   end
 
   def login
-    response = @connection.run_request(:post, 'auth', { "auth" => { "username" => @config["username"], "password" => @config["password"] } }, {})
+    response = @connection.run_request(:post, 'auth', { 'auth' => { 'username' => @config['username'], 'password' => @config['password'] } }, {})
     if response.body['response']['error_code']
       fail "#{response.body['response']['error_code']}/#{response.body['response']['error_description']}"
     end
-    @token = response.body["response"]["token"]
+    @token = response.body['response']['token']
   end
 
   def logout
@@ -53,7 +53,7 @@ class AppnexusApi::Connection
   def run_request(method, route, body, headers)
     login if !is_authorized?
     begin
-      @connection.run_request(method, route, body, { "Authorization" => @token }.merge(headers))
+      @connection.run_request(method, route, body, { 'Authorization' => @token }.merge(headers))
     rescue AppnexusApi::Unauthorized => e
       if @retry == true
         raise AppnexusApi::Unauthorized, e
@@ -63,7 +63,7 @@ class AppnexusApi::Connection
         run_request(method, route, body, headers)
       end
     rescue Faraday::Error::TimeoutError => e
-      raise AppnexusApi::Timeout, "Timeout"
+      raise AppnexusApi::Timeout, 'Timeout'
     ensure
       @retry = false
     end
