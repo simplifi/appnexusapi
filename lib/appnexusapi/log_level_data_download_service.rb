@@ -18,7 +18,7 @@ class AppnexusApi::LogLevelDataDownloadService < AppnexusApi::Service
   def download_resource(data_resource)
     data_resource.download_params.map do |params|
       uri = URI.parse(download_location(params.reject { |k,v| k == :checksum }))
-      filename = File.join(@downloaded_files_path, "#{params[:siphon_name]}_#{params[:hour]}_#{params[:timestamp]}_#{params[:split_part]}.gz")
+      filename = File.join(@downloaded_files_path, "#{params[:siphon_name]}_#{params[:hour]}_#{params[:split_part]}.gz")
       begin
         download_file(uri, filename)
         if Digest::MD5.hexdigest(File.read(filename)) != params[:checksum]
