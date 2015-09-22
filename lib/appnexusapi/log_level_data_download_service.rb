@@ -58,7 +58,7 @@ class AppnexusApi::LogLevelDataDownloadService < AppnexusApi::Service
           end
         end
       end
-    rescue Exception => e
+    rescue StandardError => e
       puts "=> Exception: '#{e}'. Skipping download."
       return
     end
