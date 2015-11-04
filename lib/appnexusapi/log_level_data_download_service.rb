@@ -19,14 +19,14 @@ class AppnexusApi::LogLevelDataDownloadService < AppnexusApi::Service
     data_resource.download_params.map do |params|
       uri = URI.parse(download_location(params.reject { |k,v| k == :checksum }))
       filename = File.join(@downloaded_files_path, "#{params[:siphon_name]}_#{params[:hour]}_#{params[:split_part]}.gz")
-      begin
+      Pester.retry_with_exponential_backoff do
         download_file(uri, filename)
-        if Digest::MD5.hexdigest(File.read(filename)) != params[:checksum]
-          puts 'Bad checksum encountered, retrying download...'
-          fail(BadChecksumException, 'Bad checksum!')
+        calculated_checksum = Digest::MD5.hexdigest(File.read(filename))
+        if calculated_checksum != params[:checksum]
+          error_message = "Calculated checksum of #{calculated_checksum} doesn't match API provided checksum #{params[:checksum]}"
+          puts error_message
+          fail(BadChecksumException, error_message)
         end
-      rescue BadChecksumException
-        retry
       end
 
       filename
