@@ -21,15 +21,15 @@ class AppnexusApi::Service
       AppnexusApi.const_get(resource_name + "Resource")
     end
   end
-  
+
   def uri_name
     name.gsub('_', '-')
   end
-  
+
   def plural_uri_name
     uri_name + 's'
   end
-  
+
   def uri_suffix
     uri_name
   end
@@ -40,7 +40,7 @@ class AppnexusApi::Service
       "num_elements" => 100,
       "start_element" => 0
     }.merge(params)
-    response = @connection.get(uri_suffix, params)
+    response = @connection.get(uri_suffix, params).body['response']
     if return_response
       response
     elsif response.has_key?(plural_name) || response.has_key?(plural_uri_name)
@@ -57,20 +57,28 @@ class AppnexusApi::Service
   def create(attributes={})
     raise(AppnexusApi::NotImplemented, "Service is read-only.") if @read_only
     attributes = { name => attributes }
-    response = @connection.post(uri_suffix, attributes)
+    response = @connection.post(uri_suffix, attributes).body['response']
+    if response['error_id']
+      response.delete('dbg')
+      raise AppnexusApi::BadRequest.new(response.inspect)
+    end
     get("id" => response["id"]).first
   end
 
   def update(id, attributes={})
     raise(AppnexusApi::NotImplemented, "Service is read-only.") if @read_only
     attributes = { name => attributes }
-    response = @connection.put([uri_suffix, id].join('/'), attributes)
+    response = @connection.put([uri_suffix, id].join('/'), attributes).body['response']
+    if response['error_id']
+      response.delete('dbg')
+      raise AppnexusApi::BadRequest.new(response.inspect)
+    end
     get("id" => response["id"]).first
   end
 
   def delete(id)
     raise(AppnexusApi::NotImplemented, "Service is read-only.") if @read_only
-    @connection.delete([uri_suffix, id].join('/'))
+    @connection.delete([uri_suffix, id].join('/')).body['response']
   end
 
 end

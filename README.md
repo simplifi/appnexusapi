@@ -20,13 +20,14 @@ Or install it yourself as:
 
 Establish a connection:
 
-    connection = AppnexusApi::Connection.new({
-      # optionally pass a uri for the staging site
-      # defaults to "http://api.adnxs.com/"
-      # uri => "http://api.sand-08.adnxs.net",
-      "username" => 'username',
-      "password" => 'password'
-    })
+    connection = AppnexusApi::Connection.new(
+      'username' => 'username',
+      'password' => 'password'
+
+      # Defaults to connecting to https://api.appnexus.com/ but you can optionally pass a uri to
+      # connect to another endpoint, e.g. the staging site could be
+      # uri: 'http://api.sand-08.adnxs.net'
+    )
 
 Use a Service:
 
@@ -46,6 +47,16 @@ Use a Service:
     }
     creative = creative_service.create(new_creative)
     creative.update("campaign" => "Testing")
+
+## Debugging
+
+The APPNEXUS_API_DEBUG environment variable will trigger full printouts of Faraday's debug output to STDERR.
+
+```bash
+cd /my/app
+export APPNEXUS_API_DEBUG=true
+bundle exec rails whatever
+```
 
 ## Contributing
 

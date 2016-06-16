@@ -15,7 +15,10 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = AppnexusApi::VERSION
 
-  gem.add_dependency 'faraday', '~>0.8.7'
-  gem.add_dependency  "multi_json", "~> 1.7.2"
+  gem.add_dependency 'faraday', '~> 0.9'
+  gem.add_dependency 'faraday_middleware'
+  gem.add_dependency 'multi_json'
+  gem.add_dependency 'pester'
+  
   gem.add_development_dependency 'bundler', '>= 1.2.0'
 end

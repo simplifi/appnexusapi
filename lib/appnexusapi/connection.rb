@@ -1,16 +1,19 @@
-require 'appnexusapi/faraday/encode_json'
-require 'appnexusapi/faraday/parse_json'
+require 'faraday_middleware'
 require 'appnexusapi/faraday/raise_http_error'
 
 class AppnexusApi::Connection
   def initialize(config)
-    config["uri"] = "http://api.adnxs.com/" unless config.has_key?("uri")
     @config = config
-    @connection = Faraday::Connection.new(:url => config["uri"]) do |builder|
-      builder.use AppnexusApi::Faraday::Request::JsonEncode
-      builder.use AppnexusApi::Faraday::Response::RaiseHttpError
-      builder.use AppnexusApi::Faraday::Response::ParseJson
-      builder.adapter Faraday.default_adapter
+    @config['uri'] ||= 'https://api.appnexus.com/'
+    @connection = Faraday.new(@config['uri']) do |conn|
+      if ENV['APPNEXUS_API_DEBUG'].to_s =~ /^(true|1)$/i
+        conn.response :logger, Logger.new(STDERR), bodies: true
+      end
+
+      conn.request :json
+      conn.response :json, :content_type => /\bjson$/
+      conn.use AppnexusApi::Faraday::Response::RaiseHttpError
+      conn.adapter Faraday.default_adapter
     end
   end
 
@@ -19,8 +22,11 @@ class AppnexusApi::Connection
   end
 
   def login
-    response = @connection.run_request(:post, 'auth', { "auth" => { "username" => @config["username"], "password" => @config["password"] } }, {})
-    @token = response.body["token"]
+    response = @connection.run_request(:post, 'auth', { 'auth' => { 'username' => @config['username'], 'password' => @config['password'] } }, {})
+    if response.body['response']['error_code']
+      fail "#{response.body['response']['error_code']}/#{response.body['response']['error_description']}"
+    end
+    @token = response.body['response']['token']
   end
 
   def logout
@@ -29,25 +35,25 @@ class AppnexusApi::Connection
 
   def get(route, params={}, headers={})
     params = params.delete_if {|key, value| value.nil? }
-    run_request(:get, @connection.build_url(route, params), nil, headers).body
+    run_request(:get, @connection.build_url(route, params), nil, headers)
   end
 
   def post(route, body=nil, headers={})
-    run_request(:post, route, body, headers).body
+    run_request(:post, route, body, headers)
   end
 
   def put(route, body=nil, headers={})
-    run_request(:put, route, body, headers).body
+    run_request(:put, route, body, headers)
   end
 
   def delete(route, body=nil, headers={})
-    run_request(:delete, route, body, headers).body
+    run_request(:delete, route, body, headers)
   end
 
   def run_request(method, route, body, headers)
     login if !is_authorized?
     begin
-      @connection.run_request(method, route, body, { "Authorization" => @token }.merge(headers))
+      @connection.run_request(method, route, body, { 'Authorization' => @token }.merge(headers))
     rescue AppnexusApi::Unauthorized => e
       if @retry == true
         raise AppnexusApi::Unauthorized, e
@@ -57,7 +63,7 @@ class AppnexusApi::Connection
         run_request(method, route, body, headers)
       end
     rescue Faraday::Error::TimeoutError => e
-      raise AppnexusApi::Timeout, "Timeout"
+      raise AppnexusApi::Timeout, 'Timeout'
     ensure
       @retry = false
     end
