@@ -1,4 +1,5 @@
 class AppnexusApi::Service
+  DEFAULT_NUMBER_OF_ELEMENTS = 100
 
   def initialize(connection)
     @connection = connection
@@ -37,7 +38,7 @@ class AppnexusApi::Service
   def get(params={})
     return_response = params.delete(:return_response) || false
     params = {
-      "num_elements" => 100,
+      "num_elements" => DEFAULT_NUMBER_OF_ELEMENTS,
       "start_element" => 0
     }.merge(params)
     response = @connection.get(uri_suffix, params).body['response']
@@ -52,6 +53,19 @@ class AppnexusApi::Service
       key = response.has_key?(name) ? name : uri_name
       [resource_class.new(response[key], self)]
     end
+  end
+
+  def get_all(params = {})
+    responses = []
+    last_responses = get(params)
+
+    while last_responses.size > 0
+      responses += last_responses
+      last_responses = get(params.merge('start_element' => responses.size))
+      sleep(1) # The gem has no error handling at all for rate limit errors; sleeping for a second prevents errors
+    end
+
+    responses
   end
 
   def create(attributes={})
