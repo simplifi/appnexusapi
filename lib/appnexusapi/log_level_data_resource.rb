@@ -4,7 +4,7 @@ class AppnexusApi::LogLevelDataResource < AppnexusApi::Resource
     fail 'Missing necessaray information!' unless name && hour && timestamp && splits
 
     splits.map do |split_part|
-      # In the case of regenerated files, there can be no checksum.  These replaced hourly files should not be downloaded.
+      # In the case of regenerated files, there should be no checksum.  These replaced hourly files should not be downloaded.
       next nil if split_part['checksum'].blank?
 
       {
