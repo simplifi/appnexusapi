@@ -40,10 +40,10 @@ Use a Service:
     creative_service = AppnexusApi::CreativeService.new(connection, member.id)
 
     new_creative = {
-      "media_url" => "http://ad.doubleclick.net/adi/ABC.Advertising.com/DEF.40;sz=300x250;click0=",
+      "content"   => "<iframe src='helloword.html'></iframe>",
       "width" => "300",
       "height" => "250",
-      "format" => "url-html"
+      "template"  =>{ "id" => 7 }
     }
     creative = creative_service.create(new_creative)
     creative.update("campaign" => "Testing")
@@ -57,6 +57,11 @@ cd /my/app
 export APPNEXUS_API_DEBUG=true
 bundle exec rails whatever
 ```
+
+## Testing
+
+There is a rudimentary test suite that centers around creatives/creative_service.  To use it, you'll need to copy the `env_example` file to `.env` and replace the values with your correct values for your account. After that, a simple `bundle exec rspec spec` will run the test suite
+
 
 ## Contributing
 
