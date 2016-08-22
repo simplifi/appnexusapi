@@ -44,14 +44,8 @@ class AppnexusApi::Service
     response = @connection.get(uri_suffix, params).body['response']
     if return_response
       response
-    elsif response.has_key?(plural_name) || response.has_key?(plural_uri_name)
-      key = response.has_key?(plural_name) ? plural_name : plural_uri_name
-      response[key].map do |json|
-        resource_class.new(json, self)
-      end
-    elsif response.has_key?(name) || response.has_key?(uri_name)
-      key = response.has_key?(name) ? name : uri_name
-      [resource_class.new(response[key], self)]
+    else
+      parse_response(response)
     end
   end
 
@@ -76,7 +70,7 @@ class AppnexusApi::Service
       response.delete('dbg')
       raise AppnexusApi::BadRequest.new(response.inspect)
     end
-    get("id" => response["id"]).first
+    parse_response(response).first
   end
 
   def update(id, attributes={})
@@ -87,12 +81,24 @@ class AppnexusApi::Service
       response.delete('dbg')
       raise AppnexusApi::BadRequest.new(response.inspect)
     end
-    get("id" => response["id"]).first
+    parse_response(response).first
   end
 
   def delete(id)
     raise(AppnexusApi::NotImplemented, "Service is read-only.") if @read_only
     @connection.delete([uri_suffix, id].join('/')).body['response']
+  end
+
+  def parse_response(response)
+    if response.has_key?(plural_name) || response.has_key?(plural_uri_name)
+      key = response.has_key?(plural_name) ? plural_name : plural_uri_name
+      response[key].map do |json|
+        resource_class.new(json, self, response['dbg'])
+      end
+    elsif response.has_key?(name) || response.has_key?(uri_name)
+      key = response.has_key?(name) ? name : uri_name
+      [resource_class.new(response[key], self, response['dbg'])]
+    end
   end
 
 end

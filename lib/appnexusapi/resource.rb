@@ -1,8 +1,9 @@
 class AppnexusApi::Resource
 
-  def initialize(json, service)
+  def initialize(json, service, dbg_info = nil)
     @json = json
     @service = service
+    @dbg_info = dbg_info
   end
 
   def update(attributes={})
@@ -16,6 +17,10 @@ class AppnexusApi::Resource
 
   def raw_json
     @json
+  end
+
+  def dbg_info
+    @dbg_info
   end
 
   def method_missing(sym, *args, &block)
