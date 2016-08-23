@@ -3,6 +3,7 @@ require 'appnexusapi/faraday/raise_http_error'
 
 class AppnexusApi::Connection
   RATE_EXCEEDED_TIMEOUT = 5
+  RATE_EXCEEDED_CODE = "RATE_EXCEEDED"
 
   def initialize(config)
     @config = config
@@ -58,7 +59,7 @@ class AppnexusApi::Connection
     begin
       while true
         response = @connection.run_request(method, route, body, { 'Authorization' => @token }.merge(headers))
-        break unless response.body["response"]["error_code"] == "RATE_EXCEEDED"
+        break unless response.body["response"]["error_code"] == RATE_EXCEEDED_CODE
         sleep RATE_EXCEEDED_TIMEOUT
       end
     rescue AppnexusApi::Unauthorized => e
