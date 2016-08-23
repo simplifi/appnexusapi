@@ -13,11 +13,13 @@ describe AppnexusApi::CreativeService do
     }
   }
 
-  xit 'respects the throttle limit' do
-    # this spec is purposefully disabled as it will create 100 new creatives as fast as possbile to bump up against
-    # the write limits.  Run this spec at your own peril!  Also, running this spec more than once in a row will
-    # bump up against your authorization limit of 10 per 300 seconds
+  it 'respects the throttle limit' do
+    # this spec will attempt to make 100 writes as fast as possible with 10 threads running in a loop
+    # of 10.  Typically you hit the limit right around 25 seconds in.  If your connection is slow, this
+    # test may never hit the throttle limit
     expect do
+      # this runs so we only authenticate once instead of 10 times.
+      _prime_the_pump = creative_service.get('num_elements' => 1, 'start_element' => 0)
       10.times do
         threads = []
         10.times do
