@@ -51,16 +51,6 @@ Use a Service:
     creative = creative_service.create(new_creative)
     creative.update("campaign" => "Testing")
 
-## Debugging
-
-The APPNEXUS_API_DEBUG environment variable will trigger full printouts of Faraday's debug output to STDERR.
-
-```bash
-cd /my/app
-export APPNEXUS_API_DEBUG=true
-bundle exec rails whatever
-```
-
 ## Testing
 
 There is a rudimentary test suite that centers around creatives/creative_service.  To use it, you'll need to copy the `env_example` file to `.env` and replace the values with your correct values for your account. After that, a simple `bundle exec rspec spec` will run the test suite
