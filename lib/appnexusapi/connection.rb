@@ -60,8 +60,13 @@ class AppnexusApi::Connection
     login if !is_authorized?
     response = {}
     begin
-      while true
-        response = @connection.run_request(method, route, body, { 'Authorization' => @token }.merge(headers))
+      loop do
+        response = @connection.run_request(
+          method,
+          route,
+          body,
+          { 'Authorization' => @token }.merge(headers)
+        )
         break unless response.status == RATE_EXCEEDED_HTTP_CODE
         wait_time = response.headers['retry-after'] || RATE_EXCEEDED_DEFAULT_TIMEOUT
         log.info("received rate exceeded.  wait time: #{wait_time}s")
@@ -75,7 +80,7 @@ class AppnexusApi::Connection
         logout
         run_request(method, route, body, headers)
       end
-    rescue Faraday::Error::TimeoutError => e
+    rescue Faraday::Error::TimeoutError => _e
       raise AppnexusApi::Timeout, 'Timeout'
     ensure
       @retry = false

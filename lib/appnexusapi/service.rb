@@ -89,15 +89,18 @@ class AppnexusApi::Service
   end
 
   def parse_response(response)
-    if response.has_key?(plural_name) || response.has_key?(plural_uri_name)
-      key = response.has_key?(plural_name) ? plural_name : plural_uri_name
+    case key = resource_name(response)
+    when plural_name, plural_uri_name
       response[key].map do |json|
         resource_class.new(json, self, response['dbg'])
       end
-    elsif response.has_key?(name) || response.has_key?(uri_name)
-      key = response.has_key?(name) ? name : uri_name
+    when name, uri_name
       [resource_class.new(response[key], self, response['dbg'])]
     end
+  end
+
+  def resource_name(response)
+    [plural_name, plural_uri_name, name, uri_name].detect { |n| response.key?(n) }
   end
 
 end
