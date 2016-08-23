@@ -22,11 +22,14 @@ Establish a connection:
 
     connection = AppnexusApi::Connection.new(
       'username' => 'username',
-      'password' => 'password'
+      'password' => 'password',
+      'logger'   => Logger.new(STDOUT) # defaults to a null logger if no value passed in.
 
       # Defaults to connecting to https://api.appnexus.com/ but you can optionally pass a uri to
       # connect to another endpoint, e.g. the staging site could be
-      # uri: 'http://api.sand-08.adnxs.net'
+      # uri: 'http://api.sand-08.adnxs.net
+
+      
     )
 
 Use a Service:
