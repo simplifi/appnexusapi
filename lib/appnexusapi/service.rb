@@ -56,7 +56,6 @@ class AppnexusApi::Service
     while last_responses.size > 0
       responses += last_responses
       last_responses = get(params.merge('start_element' => responses.size))
-      sleep(1) # The gem has no error handling at all for rate limit errors; sleeping for a second prevents errors
     end
 
     responses

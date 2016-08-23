@@ -2,8 +2,8 @@ require 'faraday_middleware'
 require 'appnexusapi/faraday/raise_http_error'
 
 class AppnexusApi::Connection
-  RATE_EXCEEDED_TIMEOUT = 5
-  RATE_EXCEEDED_CODE = "RATE_EXCEEDED"
+  RATE_EXCEEDED_DEFAULT_TIMEOUT = 15
+  RATE_EXCEEDED_HTTP_CODE = 429
 
   def initialize(config)
     @config = config
@@ -62,8 +62,10 @@ class AppnexusApi::Connection
     begin
       while true
         response = @connection.run_request(method, route, body, { 'Authorization' => @token }.merge(headers))
-        break unless response.body["response"]["error_code"] == RATE_EXCEEDED_CODE
-        sleep RATE_EXCEEDED_TIMEOUT
+        break unless response.status == RATE_EXCEEDED_HTTP_CODE
+        wait_time = response.headers['retry-after'] || RATE_EXCEEDED_DEFAULT_TIMEOUT
+        log.info("received rate exceeded.  wait time: #{wait_time}s")
+        sleep wait_time.to_i
       end
     rescue AppnexusApi::Unauthorized => e
       if @retry == true
