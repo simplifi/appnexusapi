@@ -19,7 +19,8 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'faraday_middleware'
   gem.add_dependency 'multi_json'
   gem.add_dependency 'pester'
-  
+  gem.add_dependency 'null_logger'
+
   gem.add_development_dependency 'bundler', '>= 1.2.0'
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'dotenv'

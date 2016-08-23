@@ -8,11 +8,9 @@ class AppnexusApi::Connection
   def initialize(config)
     @config = config
     @config['uri'] ||= 'https://api.appnexus.com/'
+    @logger = @config['logger'] || NullLogger.new
     @connection = Faraday.new(@config['uri']) do |conn|
-      if ENV['APPNEXUS_API_DEBUG'].to_s =~ /^(true|1)$/i
-        conn.response :logger, Logger.new(STDERR), bodies: true
-      end
-
+      conn.response :logger, @logger, bodies: true
       conn.request :json
       conn.response :json, :content_type => /\bjson$/
       conn.use AppnexusApi::Faraday::Response::RaiseHttpError
@@ -24,8 +22,13 @@ class AppnexusApi::Connection
     !@token.nil?
   end
 
+  def log
+    @logger
+  end
+
   def login
     response = @connection.run_request(:post, 'auth', { 'auth' => { 'username' => @config['username'], 'password' => @config['password'] } }, {})
+    log.debug(response.body)
     if response.body['response']['error_code']
       fail "#{response.body['response']['error_code']}/#{response.body['response']['error_description']}"
     end
@@ -75,6 +78,7 @@ class AppnexusApi::Connection
     ensure
       @retry = false
     end
+    log.debug(response.body)
     response
   end
 end
