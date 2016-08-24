@@ -1,5 +1,6 @@
 require 'faraday_middleware'
 require 'appnexusapi/faraday/raise_http_error'
+require 'null_logger'
 
 class AppnexusApi::Connection
   RATE_EXCEEDED_DEFAULT_TIMEOUT = 15
@@ -8,7 +9,7 @@ class AppnexusApi::Connection
   def initialize(config)
     @config = config
     @config['uri'] ||= 'https://api.appnexus.com/'
-    @logger = @config['logger'] || NullLogger.new
+    @logger = @config['logger'] || NullLogger.instance
     @connection = Faraday.new(@config['uri']) do |conn|
       conn.response :logger, @logger, bodies: true
       conn.request :json

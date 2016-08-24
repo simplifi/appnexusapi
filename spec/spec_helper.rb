@@ -1,7 +1,6 @@
 require 'dotenv'
 Dotenv.load
 
-Bundler.require
 require 'pry'
 require 'logger'
 require_relative '../lib/appnexusapi'
@@ -26,3 +25,12 @@ def connection
     'logger'   => test_logger
   )
 end
+
+def connection_with_null_logger
+  AppnexusApi::Connection.new(
+    'username' => ENV['APPNEXUS_USERNAME'],
+    'password' => ENV['APPNEXUS_PASSWORD'],
+    'uri'      => ENV['APPNEXUS_URI']
+  )
+end
+
