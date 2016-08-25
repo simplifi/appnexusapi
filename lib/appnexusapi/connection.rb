@@ -4,8 +4,9 @@ require 'null_logger'
 
 class AppnexusApi::Connection
   RATE_EXCEEDED_DEFAULT_TIMEOUT = 15
-  # Inexplicably, sandbox uses the correct code of 429, while production uses 405?
-  RATE_EXCEEDED_HTTP_CODES = [429, 405]
+  # Inexplicably, sandbox uses the correct code of 429, while production uses 405? so
+  # we just rely on the error message
+  RATE_EXCEEDED_ERROR = "RATE_EXCEEDED".freeze
 
   def initialize(config)
     @config = config
@@ -69,7 +70,7 @@ class AppnexusApi::Connection
           body,
           { 'Authorization' => @token }.merge(headers)
         )
-        break unless RATE_EXCEEDED_HTTP_CODES.include? response.status
+        break unless response.body.fetch('response', {})['error_code'] == RATE_EXCEEDED_ERROR
         wait_time = response.headers['retry-after'] || RATE_EXCEEDED_DEFAULT_TIMEOUT
         log.info("received rate exceeded.  wait time: #{wait_time}s")
         sleep wait_time.to_i
