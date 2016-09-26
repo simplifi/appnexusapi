@@ -2,11 +2,11 @@
 require File.expand_path('../lib/appnexusapi/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Brandon Aaron"]
-  gem.email         = ["brandon.aaron@gmail.com"]
+  gem.authors       = ["Marlon Moyer", "Josh Scott", "Brandon Aaron"]
+  gem.email         = ["marlon@simpli.fi", "josh@simpli.fi"]
   gem.description   = %q{}
   gem.summary       = %q{Unofficial Ruby API Wrapper for Appnexus}
-  gem.homepage      = "http://simpli.fi"
+  gem.homepage      = "https://github.com/simplifi/appnexusapi"
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
