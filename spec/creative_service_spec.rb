@@ -1,16 +1,31 @@
 require 'spec_helper'
 
 describe AppnexusApi::CreativeService do
+  before(:all) do
+    advertiser_service = AppnexusApi::AdvertiserService.new(connection)
+    advertiser_params = { name: "rspec test advertiser" }
+    @advertiser = advertiser_service.create({}, advertiser_params)
+  end
+
+  let(:route_params) do
+    { advertiser_id: @advertiser.id }
+  end
+
+  after(:all) do
+    @advertiser.delete
+  end
+
   let(:creative_service) do
-    AppnexusApi::CreativeService.new(connection, ENV['APPNEXUS_MEMBER_ID'])
+    AppnexusApi::CreativeService.new(connection)
   end
   let(:new_creative) do
     {
-      'campaign'  => 'default campaign',
+      'name'      => 'rspec test creative',
       'content'   => '<iframe src="helloword.html"></iframe>',
       'width'     => '300',
       'height'    => '250',
       'template'  => { 'id' => 7 }
+
     }
   end
 
@@ -26,7 +41,7 @@ describe AppnexusApi::CreativeService do
         threads = []
         10.times do
           threads << Thread.new do
-            creative = creative_service.create(new_creative)
+            creative = creative_service.create(route_params, new_creative)
             puts creative.dbg_info
           end
         end
@@ -43,26 +58,27 @@ describe AppnexusApi::CreativeService do
 
   context 'creating a new creative' do
     it 'supports creating a new creative' do
-      creative = creative_service.create(new_creative)
+      pub_id = @advertiser.id
+      creative = creative_service.create(route_params, new_creative)
       expect(creative.width).to eq 300
       expect(creative.height).to eq 250
     end
   end
 
   context 'an existing creative' do
-    let(:existing_creative) { creative_service.create(new_creative) }
+    let(:existing_creative) { creative_service.create(route_params, new_creative) }
 
     it 'supports changing attributes with the update action' do
-      expect(existing_creative.campaign).to eq 'default campaign'
-      existing_creative.update('campaign' => 'My Best Campaign Yet')
-      expect(existing_creative.campaign).to eq 'My Best Campaign Yet'
+      expect(existing_creative.code).to be_nil
+      existing_creative.update(route_params, code: "abc")
+      expect(existing_creative.code).to eq "abc"
     end
 
     it 'supports removing the creative' do
       id = existing_creative.id
       creative = creative_service.get('id' => id).first
       expect(creative.id).to eq id
-      existing_creative.delete
+      existing_creative.delete(route_params)
       creative = creative_service.get('id' => id)
       expect(creative).to be_nil
     end
