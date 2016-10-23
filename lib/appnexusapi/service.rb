@@ -88,7 +88,12 @@ class AppnexusApi::Service
   def delete(id, route_params)
     raise(AppnexusApi::NotImplemented, "Service is read-only.") if @read_only
     route = @connection.build_url(uri_suffix, route_params.merge("id" => id))
-    @connection.delete(route).body['response']
+    response = @connection.delete(route).body['response']
+    if response['error_id']
+      response.delete('dbg')
+      raise AppnexusApi::BadRequest.new(response.inspect)
+    end
+    response
   end
 
   def parse_response(response)
