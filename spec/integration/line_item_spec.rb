@@ -2,9 +2,18 @@ require 'spec_helper'
 
 describe "line items" do
   before(:all) do
-    @connection = connection
-    @advertiser_id = 11510
-    @line_item_service = AppnexusApi::LineItemService.new(@connection)
+    @advertiser_id = ENV['APPNEXUS_ADVERTISER_ID']
+    if @advertiser_id.nil?
+      advertiser_service = AppnexusApi::AdvertiserService.new(connection)
+      advertiser_params = { name: "rspec test advertiser" }
+      @advertiser = advertiser_service.create({}, advertiser_params)
+      @advertiser_id = @advertiser.id
+    end
+    @line_item_service = AppnexusApi::LineItemService.new(connection)
+  end
+
+  after(:all) do
+    @advertiser.delete if @advertiser
   end
 
   it "line item life cycle" do
