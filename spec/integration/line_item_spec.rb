@@ -44,6 +44,6 @@ describe "line items" do
     # delete a line item
     new_line_item.delete({"advertiser_id" => @advertiser_id})
 
-    expect { @line_item_service.get("id" => new_line_item.id) }.to raise_error(AppnexusApi::UnprocessableEntity)
+    expect(@line_item_service.get("id" => new_line_item.id)).to be_nil
   end
 end

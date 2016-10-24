@@ -17,17 +17,16 @@ describe "AppNexus Publisher" do
     }
 
     publisher = @publisher_service.create({}, new_publisher_params)
-    publisher.name.should == "Publisher Name"
-    publisher.code.should == code
-    publisher.expose_domains.should == true
-    publisher.reselling_exposure.should == "public"
-    publisher.ad_quality_advanced_mode_enabled.should == true
-
+    expect(publisher.name).to eq "Publisher Name"
+    expect(publisher.code).to eq code
+    expect(publisher.expose_domains).to be true
+    expect(publisher.reselling_exposure).to eq "public"
+    expect(publisher.ad_quality_advanced_mode_enabled).to be true
 
     expect { @publisher_service.get("id" => publisher.id) }.to_not raise_error
 
     publisher.delete
 
-    expect { @publisher_service.get("id" => publisher.id) }.to raise_error(AppnexusApi::UnprocessableEntity)
+    expect(@publisher_service.get("id" => publisher.id)).to be_nil
   end
 end
