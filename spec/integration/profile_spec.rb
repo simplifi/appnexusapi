@@ -14,13 +14,13 @@ describe "profile service" do
     profile_params = {
       :code => "spec_profile_code_#{Time.now.to_i}_#{rand(9_000_000)}",
       :description => "Targeting only the US",
-      :country_targets => [ { :country => "US" } ],
+      :country_targets => [ { :id => 233 } ],
       :country_action  => "include"
     }
 
     profile = @profile_service.create(profile_url_params, profile_params)
     profile.description.should == "Targeting only the US"
-    profile.country_targets.should == [{"country"=>"US", "name"=>"United States"}]
+    profile.country_targets.should == [{"id"=>233,"code"=>"US", "name"=>"United States"}]
 
     # create a line item
     new_line_item_url_params = {

@@ -15,7 +15,7 @@ describe "campaign service" do
     profile_params = {
       :code => "spec_profile_code_#{Time.now.to_i}_#{rand(9_000_000)}",
       :description => "Targeting only the US",
-      :country_targets => [ { :country => "US" } ],
+      :country_targets => [ { id: 233 } ],
       :country_action  => "include"
     }
 
