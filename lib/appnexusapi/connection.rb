@@ -68,7 +68,7 @@ class AppnexusApi::Connection
     response = {}
     begin
       loop do
-        response = @connection.run_request(
+        response = run_request_only(
           method,
           route,
           body,
@@ -94,5 +94,14 @@ class AppnexusApi::Connection
     end
     log.debug(response.body)
     response
+  end
+
+  def run_request_only(method, route, body, headers)
+    @connection.run_request(
+      method,
+      route,
+      body,
+      { 'Authorization' => @token }.merge(headers)
+    )
   end
 end
