@@ -85,7 +85,7 @@ class AppnexusApi::Connection
       else
         @retry = true
         logout
-        run_request(method, route, body, headers)
+        response = run_request(method, route, body, headers)
       end
     rescue Faraday::Error::TimeoutError => _e
       raise AppnexusApi::Timeout, 'Timeout'
