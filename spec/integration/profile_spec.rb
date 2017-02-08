@@ -8,7 +8,6 @@ describe AppnexusApi::ProfileService do
 
   it "profile life cycle" do
     VCR.use_cassette('profile_life_cycle') do
-      profile_url_params = { :advertiser_id => advertiser_id }
       profile_params = {
         :code => "spec_profile_code",
         :description => profile_descript,
@@ -16,7 +15,7 @@ describe AppnexusApi::ProfileService do
         :country_action  => "include"
       }
 
-      profile = profile_service.create(profile_url_params, profile_params)
+      profile = profile_service.create(advertiser_url_params, profile_params)
       expect(profile.description).to eq(profile_descript)
       expect(profile.country_targets.to eq([{ "id"=>233,"code"=>"US", "name"=>"United States" }])
 
