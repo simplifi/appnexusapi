@@ -1,28 +1,22 @@
 require 'spec_helper'
 
-describe 'AppNexus Content Category' do
-  before(:all) do
-    @connection = connection
-    @ccs = AppnexusApi::ContentCategoryService.new(@connection)
+describe AppnexusApi::ContentCategoryService do
+  let(:ccs) { described_class.new(connection) }
+  let(:name) { 'rspec_content_category' }
+  let(:name_update) { name + '_part_2' }
+
+  it 'cruds' do
+    VCR.use_cassette('content_category_crud') do
+      created = ccs.create({}, name: name)
+
+      gotten = ccs.get(id: created.id).first
+      expect(gotten.name).to eq(name)
+
+      gotten.update({}, name: name_update)
+      expect(ccs.get(id: created.id).first.name).to eq(name_update)
+
+      gotten.delete({})
+      expect(ccs.get(id: created.id)).to be_nil
+    end
   end
-
-  #I swear this used to work...
-  #it 'default categories' do
-  #  expect(@ccs.get(is_system: true)).not_to be_empty
-  #end
-
-  it "crud" do
-    ts = "_#{Time.now.to_i}"
-    created = @ccs.create({}, name: "rspec" + ts)
-
-    gotten = @ccs.get(id: created.id).first
-    expect(gotten.name).to eq "rspec" + ts
-
-    gotten.update({}, name: "rspec2" + ts)
-    expect(@ccs.get(id: created.id).first.name).to eq "rspec2" + ts
-
-    gotten.delete({})
-    expect(@ccs.get(id: created.id)).to be_nil
-  end
-
 end

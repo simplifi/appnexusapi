@@ -1,0 +1,398 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-test.appnexus.com/auth
+    body:
+      encoding: UTF-8
+      string: '{"auth":{"username":"<APPNEXUS_USERNAME>","password":"<APPNEXUS_PASSWORD>"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '699'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 11:02:21 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589afabeddb39%3Anym2; Path=/
+      X-Route:
+      - "/auth"
+      X-Route-Time:
+      - '1581'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","token":"hbapi:171678:589afabeddb39:nym2","dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","parent_dbg_info":{"instance":"01.api.test104169.nym2","slave_hit":false,"db":"master","awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"2bdb10c6-bfa5-50d6-932b-469d69f74b84","warnings":[],"time":794.14391517639,"start_microtime":1486551741.5774,"version":"1.17","output_term":"not_found"},"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"41fa83c9-ca0a-51ca-bb24-78d687efb9a5","warnings":[],"time":1569.8549747467,"start_microtime":1486551741.5574,"version":"1.17.202","slave_lag":1033284,"output_term":"not_found"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 11:02:21 GMT
+- request:
+    method: post
+    uri: https://api-test.appnexus.com/content-category
+    body:
+      encoding: UTF-8
+      string: '{"content-category":{"name":"rspec_content_category"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:589afabeddb39:nym2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '913'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 11:02:23 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589afabeddb39%3Anym2; Path=/
+      X-Count-Read:
+      - user:1,member:0,serviceHostUser:0,serviceHostMember:0,hostUser:0,hostMember:0,ip:0
+      X-Count-Write:
+      - user:1,member:1,serviceHostUser:1,serviceHostMember:1,hostUser:1,hostMember:1,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/content-category"
+      X-Route-Time:
+      - '261'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","count":1,"id":46954,"start_element":0,"num_elements":100,"content-category":{"id":46954,"name":"rspec_content_category","description":null,"is_system":false,"last_modified":"2017-02-08
+        11:02:23","type":"standard","member_id":487,"code":null,"parent_category":null},"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":1,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":1,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":0,"read_limit":1000,"read_limit_seconds":60,"writes":1,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"2bb35da1-23ea-50af-9493-db16fe51611d","warnings":[],"time":248.16298484802,"start_microtime":1486551743.5053,"version":"1.17.202","slave_lag":1033284,"member_last_modified_age":1486551743,"output_term":"content-category"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 11:02:22 GMT
+- request:
+    method: get
+    uri: https://api-test.appnexus.com/content-category?id=46954&num_elements=100&start_element=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:589afabeddb39:nym2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '924'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 11:02:24 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589afabeddb39%3Anym2; Path=/
+      X-Count-Read:
+      - user:2,member:1,serviceHostUser:1,serviceHostMember:1,hostUser:1,hostMember:1,ip:0
+      X-Count-Write:
+      - user:1,member:1,serviceHostUser:1,serviceHostMember:1,hostUser:1,hostMember:1,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/content-category"
+      X-Route-Time:
+      - '25'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","start_element":0,"num_elements":100,"content-category":{"id":46954,"name":"rspec_content_category","description":null,"is_system":false,"last_modified":"2017-02-08
+        11:02:23","type":"standard","member_id":487,"code":null,"parent_category":null},"count":1,"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":2,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":1,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":1,"read_limit":1000,"read_limit_seconds":60,"writes":1,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"82d7830b-e350-53a9-9fbb-ba949dc685f9","warnings":[],"time":16.051054000854,"start_microtime":1486551744.5806,"version":"1.17.202","slave_miss":"no_slaves_found","slave_lag":1033284,"member_last_modified_age":1,"output_term":"content-category"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 11:02:22 GMT
+- request:
+    method: put
+    uri: https://api-test.appnexus.com/content-category?id=46954
+    body:
+      encoding: UTF-8
+      string: '{"content-category":{"name":"rspec_content_category_part_2"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:589afabeddb39:nym2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '922'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 11:02:24 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589afabeddb39%3Anym2; Path=/
+      X-Count-Read:
+      - user:2,member:1,serviceHostUser:1,serviceHostMember:1,hostUser:1,hostMember:1,ip:0
+      X-Count-Write:
+      - user:2,member:2,serviceHostUser:2,serviceHostMember:2,hostUser:2,hostMember:2,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/content-category"
+      X-Route-Time:
+      - '264'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","count":1,"id":"46954","start_element":0,"num_elements":100,"content-category":{"id":46954,"name":"rspec_content_category_part_2","description":null,"is_system":false,"last_modified":"2017-02-08
+        11:02:25","type":"standard","member_id":487,"code":null,"parent_category":null},"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":2,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":2,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":1,"read_limit":1000,"read_limit_seconds":60,"writes":2,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"bb0f00f9-162f-5b07-be06-3de7bd827fd0","warnings":[],"time":249.37701225281,"start_microtime":1486551745.0014,"version":"1.17.202","slave_lag":1033284,"member_last_modified_age":1486551745,"output_term":"content-category"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 11:02:23 GMT
+- request:
+    method: get
+    uri: https://api-test.appnexus.com/content-category?id=46954&num_elements=100&start_element=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:589afabeddb39:nym2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '931'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 11:02:25 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589afabeddb39%3Anym2; Path=/
+      X-Count-Read:
+      - user:3,member:2,serviceHostUser:2,serviceHostMember:2,hostUser:2,hostMember:2,ip:0
+      X-Count-Write:
+      - user:2,member:2,serviceHostUser:2,serviceHostMember:2,hostUser:2,hostMember:2,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/content-category"
+      X-Route-Time:
+      - '25'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","start_element":0,"num_elements":100,"content-category":{"id":46954,"name":"rspec_content_category_part_2","description":null,"is_system":false,"last_modified":"2017-02-08
+        11:02:25","type":"standard","member_id":487,"code":null,"parent_category":null},"count":1,"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":3,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":2,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":2,"read_limit":1000,"read_limit_seconds":60,"writes":2,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"1399466c-8a11-5d31-b09a-5804997fbcfd","warnings":[],"time":16.433954238892,"start_microtime":1486551745.6265,"version":"1.17.202","slave_miss":"no_slaves_found","slave_lag":1033284,"member_last_modified_age":0,"output_term":"content-category"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 11:02:23 GMT
+- request:
+    method: delete
+    uri: https://api-test.appnexus.com/content-category?id=46954
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:589afabeddb39:nym2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '691'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 11:02:26 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589afabeddb39%3Anym2; Path=/
+      X-Count-Read:
+      - user:3,member:2,serviceHostUser:2,serviceHostMember:2,hostUser:2,hostMember:2,ip:0
+      X-Count-Write:
+      - user:3,member:3,serviceHostUser:3,serviceHostMember:3,hostUser:3,hostMember:3,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/content-category"
+      X-Route-Time:
+      - '265'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","count":1,"start_element":0,"num_elements":100,"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":true,"db":"10.3.204.17","user::reads":3,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":3,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":2,"read_limit":1000,"read_limit_seconds":60,"writes":3,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"b3390011-c14f-5631-8f74-14cad68b87e8","warnings":[],"time":250.89311599731,"start_microtime":1486551746.1226,"version":"1.17.202","slave_lag":1033284,"member_last_modified_age":1486551746,"output_term":"not_found"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 11:02:24 GMT
+- request:
+    method: get
+    uri: https://api-test.appnexus.com/content-category?id=46954&num_elements=100&start_element=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:589afabeddb39:nym2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '815'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 11:02:26 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589afabeddb39%3Anym2; Path=/
+      X-Count-Read:
+      - user:4,member:3,serviceHostUser:3,serviceHostMember:3,hostUser:3,hostMember:3,ip:0
+      X-Count-Write:
+      - user:3,member:3,serviceHostUser:3,serviceHostMember:3,hostUser:3,hostMember:3,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/content-category"
+      X-Route-Time:
+      - '26'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"error_id":"SYNTAX","error":"resource not found","error_description":null,"service":null,"method":null,"error_code":null,"count":0,"start_element":0,"num_elements":100,"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":4,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":3,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":3,"read_limit":1000,"read_limit_seconds":60,"writes":3,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"fc387b5e-4c3d-5f0d-8caf-d52534d77bf6","warnings":[],"time":16.757965087891,"start_microtime":1486551746.959,"version":"1.17.202","slave_miss":"no_slaves_found","slave_lag":1033284,"member_last_modified_age":0,"output_term":"not_found"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 11:02:25 GMT
+recorded_with: VCR 3.0.3
