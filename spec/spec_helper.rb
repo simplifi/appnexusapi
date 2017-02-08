@@ -21,13 +21,13 @@ module SpecWithConnection
     {
       'username' => ENV['APPNEXUS_USERNAME'],
       'password' => ENV['APPNEXUS_PASSWORD'],
-      'uri'      => ENV['APPNEXUS_URI']
+      'uri'      => ENV['APPNEXUS_URI'] || 'https://api-test.appnexus.com'
     }
   end
 end
 
 RSpec.configure do |config|
-  config.before(:all) do
+  config.before(:suite) do
     FileUtils.mkdir_p('./log')
   end
 

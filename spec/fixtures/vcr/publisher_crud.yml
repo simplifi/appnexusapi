@@ -1,0 +1,282 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-test.appnexus.com/auth
+    body:
+      encoding: UTF-8
+      string: '{"auth":{"username":"<APPNEXUS_USERNAME>","password":"<APPNEXUS_PASSWORD>"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '698'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 11:18:31 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589afe88cdf17%3Anym2; Path=/
+      X-Route:
+      - "/auth"
+      X-Route-Time:
+      - '1080'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","token":"hbapi:171678:589afe88cdf17:nym2","dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","parent_dbg_info":{"instance":"01.api.test104169.nym2","slave_hit":false,"db":"master","awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"72864e13-083b-57a8-bce2-61a3c527e9ed","warnings":[],"time":638.21291923523,"start_microtime":1486552711.8713,"version":"1.17","output_term":"not_found"},"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"3d0b7162-d338-596e-b52e-58d2c7e2403c","warnings":[],"time":1069.179058075,"start_microtime":1486552711.8501,"version":"1.17.202","slave_lag":1034251,"output_term":"not_found"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 11:18:31 GMT
+- request:
+    method: post
+    uri: https://api-test.appnexus.com/publisher
+    body:
+      encoding: UTF-8
+      string: '{"publisher":{"name":"Publisher Name","code":"spec_code","expose_domains":true,"reselling_exposure":"public","ad_quality_advanced_mode_enabled":true}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:589afe88cdf17:nym2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '2350'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 11:18:33 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589afe88cdf17%3Anym2; Path=/
+      X-Count-Read:
+      - user:1,member:0,serviceHostUser:0,serviceHostMember:0,hostUser:0,hostMember:0,ip:0
+      X-Count-Write:
+      - user:1,member:1,serviceHostUser:1,serviceHostMember:1,hostUser:1,hostMember:1,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/publisher"
+      X-Route-Time:
+      - '274'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","count":1,"id":925466,"start_element":0,"num_elements":100,"publisher":{"id":925466,"code":"spec_code","reselling_name":null,"expose_domains":true,"is_rtb":false,"reselling_exposure":"public","reselling_exposed_on":"2017-02-08
+        11:18:33","timezone":"EST5EDT","last_modified":"2017-02-08 11:18:33","max_learn_pct":0,"accept_demand_partner_usersync":null,"learn_bypass_cpm":5,"ad_quality_advanced_mode_enabled":true,"allow_report_on_default_imps":false,"inventory_source":null,"inventory_relationship":"undeclared","disclosure_status":"undisclosed","name":"Publisher
+        Name","description":"","state":"active","default_site_id":2647497,"default_ad_profile_id":null,"billing_dba":null,"billing_address1":null,"billing_address2":null,"billing_city":null,"billing_state":null,"billing_zip":null,"billing_country":null,"accept_supply_partner_usersync":null,"accept_data_provider_usersync":null,"ym_profile_id":null,"allow_cpm_managed":true,"allow_cpm_external":true,"allow_cpa_managed":true,"allow_cpa_external":false,"allow_cpc_managed":true,"allow_cpc_external":false,"managed_cpc_bias_pct":100,"managed_cpa_bias_pct":100,"external_cpc_bias_pct":100,"external_cpa_bias_pct":100,"is_oo":false,"base_payment_rule_id":1192833,"base_ad_quality_rule_id":null,"currency":"USD","visibility_profile_id":null,"cpm_reselling_disabled":false,"cpc_reselling_disabled":false,"platform_ops_notes":null,"pitbull_segment_id":0,"pitbull_segment_value":0,"enable_cookie_tracking_default":true,"seller_page_cap_enabled":false,"inventory_source_name":null,"billing_internal_user":null,"labels":null,"placements":[{"id":10584226,"code":null}],"external_inv_codes":null,"contact_info":null,"publisher_brand_exceptions":null,"contact":null},"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":1,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":1,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":0,"read_limit":1000,"read_limit_seconds":60,"writes":1,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"c42a69ac-a096-51aa-b14d-5874529b4f41","warnings":[],"time":258.40306282043,"start_microtime":1486552713.2962,"version":"1.17.202","slave_lag":1034251,"member_last_modified_age":1486552713,"output_term":"publisher"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 11:18:31 GMT
+- request:
+    method: get
+    uri: https://api-test.appnexus.com/publisher?id=925466&num_elements=100&start_element=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:589afe88cdf17:nym2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '2359'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 11:18:34 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589afe88cdf17%3Anym2; Path=/
+      X-Count-Read:
+      - user:2,member:1,serviceHostUser:1,serviceHostMember:1,hostUser:1,hostMember:1,ip:0
+      X-Count-Write:
+      - user:1,member:1,serviceHostUser:1,serviceHostMember:1,hostUser:1,hostMember:1,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/publisher"
+      X-Route-Time:
+      - '37'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","start_element":0,"num_elements":100,"publisher":{"id":925466,"code":"spec_code","reselling_name":null,"expose_domains":true,"is_rtb":false,"reselling_exposure":"public","reselling_exposed_on":"2017-02-08
+        11:18:33","timezone":"EST5EDT","last_modified":"2017-02-08 11:18:33","max_learn_pct":0,"accept_demand_partner_usersync":null,"learn_bypass_cpm":5,"ad_quality_advanced_mode_enabled":true,"allow_report_on_default_imps":false,"inventory_source":null,"inventory_relationship":"undeclared","disclosure_status":"undisclosed","name":"Publisher
+        Name","description":"","state":"active","default_site_id":2647497,"default_ad_profile_id":null,"billing_dba":null,"billing_address1":null,"billing_address2":null,"billing_city":null,"billing_state":null,"billing_zip":null,"billing_country":null,"accept_supply_partner_usersync":null,"accept_data_provider_usersync":null,"ym_profile_id":null,"allow_cpm_managed":true,"allow_cpm_external":true,"allow_cpa_managed":true,"allow_cpa_external":false,"allow_cpc_managed":true,"allow_cpc_external":false,"managed_cpc_bias_pct":100,"managed_cpa_bias_pct":100,"external_cpc_bias_pct":100,"external_cpa_bias_pct":100,"is_oo":false,"base_payment_rule_id":1192833,"base_ad_quality_rule_id":null,"currency":"USD","visibility_profile_id":null,"cpm_reselling_disabled":false,"cpc_reselling_disabled":false,"platform_ops_notes":null,"pitbull_segment_id":0,"pitbull_segment_value":0,"enable_cookie_tracking_default":true,"seller_page_cap_enabled":false,"inventory_source_name":null,"billing_internal_user":null,"labels":null,"placements":[{"id":10584226,"code":null}],"external_inv_codes":null,"contact_info":null,"publisher_brand_exceptions":null,"contact":null},"count":1,"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":2,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":1,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":1,"read_limit":1000,"read_limit_seconds":60,"writes":1,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"6cb2b3de-56fd-5a7a-93dc-2aefcd49382f","warnings":[],"time":26.94296836853,"start_microtime":1486552714.0462,"version":"1.17.202","slave_miss":"no_slaves_found","slave_lag":1034251,"member_last_modified_age":1,"output_term":"publisher"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 11:18:32 GMT
+- request:
+    method: delete
+    uri: https://api-test.appnexus.com/publisher?id=925466
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:589afe88cdf17:nym2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '695'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 11:18:34 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589afe88cdf17%3Anym2; Path=/
+      X-Count-Read:
+      - user:2,member:1,serviceHostUser:1,serviceHostMember:1,hostUser:1,hostMember:1,ip:0
+      X-Count-Write:
+      - user:2,member:2,serviceHostUser:2,serviceHostMember:2,hostUser:2,hostMember:2,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/publisher"
+      X-Route-Time:
+      - '661'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","count":1,"start_element":null,"num_elements":null,"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":true,"db":"10.3.204.17","user::reads":2,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":2,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":1,"read_limit":1000,"read_limit_seconds":60,"writes":2,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"e5ef5cab-f6a9-54c6-85a2-3b8d3e9defa2","warnings":[],"time":632.24792480469,"start_microtime":1486552714.5432,"version":"1.17.202","slave_lag":1034251,"member_last_modified_age":1486552714,"output_term":"not_found"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 11:18:33 GMT
+- request:
+    method: get
+    uri: https://api-test.appnexus.com/publisher?id=925466&num_elements=100&start_element=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:589afe88cdf17:nym2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '805'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 11:18:35 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589afe88cdf17%3Anym2; Path=/
+      X-Count-Read:
+      - user:3,member:2,serviceHostUser:2,serviceHostMember:2,hostUser:2,hostMember:2,ip:0
+      X-Count-Write:
+      - user:2,member:2,serviceHostUser:2,serviceHostMember:2,hostUser:2,hostMember:2,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/publisher"
+      X-Route-Time:
+      - '25'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"error_id":"SYNTAX","error":"publisher id not found: 925466","error_description":null,"service":"publisher","method":"GET","error_code":"NOTFOUND_PUBLISHER","dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":3,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":2,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":2,"read_limit":1000,"read_limit_seconds":60,"writes":2,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"421e5168-5947-5256-8547-922ab7bdd470","warnings":[],"time":15.337944030762,"start_microtime":1486552715.5665,"version":"1.17.202","slave_miss":"no_slaves_found","slave_lag":1034251,"member_last_modified_age":0,"output_term":"not_found"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 11:18:33 GMT
+recorded_with: VCR 3.0.3

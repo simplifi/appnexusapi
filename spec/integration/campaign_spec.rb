@@ -1,11 +1,9 @@
 require 'spec_helper'
 
 describe AppnexusApi::CampaignService do
-  include_context 'with an advertiser'
+  include_context 'with a new line item'
 
-  let(:url_params) { { advertiser_id: advertiser_id } }
   let(:campaign_name) { 'campaign name' }
-  let(:new_line_item_params) { { name: 'some line item', code: 'spec_line_code' } }
   let(:profile_params) do
     {
       code: 'spec_profile_code',
@@ -17,8 +15,8 @@ describe AppnexusApi::CampaignService do
 
   it 'executes a campaigns life cycle' do
     VCR.use_cassette('campaign_life_cycle') do
-      profile = AppnexusApi::ProfileService.new(connection).create(url_params, profile_params)
-      new_line_item = AppnexusApi::LineItemService.new(connection).create(url_params, new_line_item_params)
+      profile = AppnexusApi::ProfileService.new(connection).create(advertiser_url_params, profile_params)
+      new_line_item = AppnexusApi::LineItemService.new(connection).create(advertiser_url_params, line_item_params)
       campaign_params = {
         name: campaign_name,
         code: 'codecode',
@@ -26,14 +24,14 @@ describe AppnexusApi::CampaignService do
         inventory_type: 'direct',
         profile_id: profile.id # profile is what targets Geo
       }
-      campaign = described_class.new(connection).create(url_params, campaign_params)
+      campaign = described_class.new(connection).create(advertiser_url_params, campaign_params)
 
       expect(campaign.name).to eq('campaign name')
       expect(campaign.profile_id).to eq(profile.id)
 
-      campaign.delete(url_params)
+      campaign.delete(advertiser_url_params)
       new_line_item.delete('advertiser_id' => advertiser_id)
-      profile.delete(url_params)
+      profile.delete(advertiser_url_params)
       advertiser.delete
     end
   end

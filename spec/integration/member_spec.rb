@@ -1,13 +1,9 @@
 require 'spec_helper'
 
-describe 'Appnexus Member' do
-  before(:all) do
-    @connection = connection
-    @member_service = AppnexusApi::MemberService.new(@connection)
-  end
-
-
+describe AppnexusApi::MemberService do
   it 'returns the current member' do
-    @member_service.get
+    VCR.use_cassette('member_get') do
+      described_class.new(connection).get
+    end
   end
 end

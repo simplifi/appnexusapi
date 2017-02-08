@@ -1,0 +1,150 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-test.appnexus.com/auth
+    body:
+      encoding: UTF-8
+      string: '{"auth":{"username":"<APPNEXUS_USERNAME>","password":"<APPNEXUS_PASSWORD>"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '699'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 11:15:59 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589afdf061874%3Anym2; Path=/
+      X-Route:
+      - "/auth"
+      X-Route-Time:
+      - '1227'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","token":"hbapi:171678:589afdf061874:nym2","dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","parent_dbg_info":{"instance":"01.api.test104169.nym2","slave_hit":false,"db":"master","awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"fb8f7da1-1db8-5749-bdf8-0e44870d7b89","warnings":[],"time":796.40293121338,"start_microtime":1486552559.2726,"version":"1.17","output_term":"not_found"},"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"e2e33e1f-b5b9-55f1-8309-cefd907f1bd4","warnings":[],"time":1217.1049118042,"start_microtime":1486552559.2515,"version":"1.17.202","slave_lag":1034100,"output_term":"not_found"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 11:15:58 GMT
+- request:
+    method: get
+    uri: https://api-test.appnexus.com/member?num_elements=100&start_element=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:589afdf061874:nym2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 11:16:01 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589afdf061874%3Anym2; Path=/
+      Transfer-Encoding:
+      - chunked
+      X-Count-Read:
+      - user:4,member:2,serviceHostUser:2,serviceHostMember:2,hostUser:2,hostMember:2,ip:0
+      X-Count-Write:
+      - user:0,member:0,serviceHostUser:0,serviceHostMember:0,hostUser:0,hostMember:0,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/member"
+      X-Route-Time:
+      - '38'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","start_element":0,"num_elements":100,"member":{"id":487,"name":"Lumos
+        Labs","whitelabel_support_email":"support@adnexus.com","reselling_description":null,"state":"active","no_reselling_priority":6,"entity_type":"reseller","interface_domain":null,"interface_domain_beta":null,"reselling_exposure":"private","reselling_exposed_on":"1970-01-01
+        00:00:01","last_modified":"2017-01-07 07:39:17","timezone":"EST5EDT","default_currency":"USD","use_insertion_orders":false,"expose_optimization_levers":true,"default_optimization_version":7,"daily_imps_verified":null,"daily_imps_self_audited":null,"daily_imps_unaudited":null,"allow_non_cpm_payment":false,"default_allow_cpc":true,"default_allow_cpa":true,"default_campaign_trust":"appnexus","default_campaign_allow_unaudited":false,"contract_allows_unaudited":true,"enable_facebook":false,"reporting_decimal_type":"decimal","email_code":null,"enable_click_and_imp_trackers":true,"default_ad_profile_id":739,"buyer_credit_limit":25000,"platform_exposure":"public","contact_email":null,"allow_ad_profile_override":true,"short_name":"lumos","expose_eap_ecp_placement_settings":false,"default_external_audit":false,"plugins_enabled":true,"default_placement_id":null,"default_inv_source_id":null,"seller_revshare_pct":85,"dongle":"blue","buyer_clearing_fee_pct":null,"audit_notify_email":"mark@lumoslabs.com","max_hosted_video_size":null,"visibility_profile_id":267,"pops_enabled_UI":false,"allow_priority_audit":true,"default_accept_data_provider_usersync":true,"default_accept_demand_partner_usersync":true,"default_accept_supply_partner_usersync":true,"domain_blacklist_email":null,"require_facebook_preaudit":true,"ym_profile_id":null,"default_discrepancy_pct":null,"pitbull_segment_id":0,"pitbull_segment_value":0,"description":null,"sherlock_notify_email":"mark@lumoslabs.com","default_content_retrieval_timeout_ms":0,"default_enable_for_mediation":false,"prioritize_margin":false,"deal_visibility_profile_id":null,"xd_coop":false,"age_segment_id":null,"gender_segment_id":null,"developer_id":null,"daily_budget":10000,"account_owner_user":{"id":176139,"first_name":"Mallory","last_name":"Walsh"},"default_country":null,"content_categories":[{"id":4134,"ym_profile_id":null,"parent_category_id":null,"name":"Pets
+        \u0026 Animals","reselling_exposed_on":"1970-01-01 00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4135,"ym_profile_id":null,"parent_category_id":null,"name":"Fun
+        \u0026 Trivia","reselling_exposed_on":"1970-01-01 00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4136,"ym_profile_id":null,"parent_category_id":null,"name":"Autos
+        \u0026 Vehicles","reselling_exposed_on":"1970-01-01 00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4137,"ym_profile_id":null,"parent_category_id":null,"name":"Beauty
+        \u0026 Personal Care","reselling_exposed_on":"1970-01-01 00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4138,"ym_profile_id":null,"parent_category_id":null,"name":"Business
+        \u0026 Industry","reselling_exposed_on":"1970-01-01 00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4139,"ym_profile_id":null,"parent_category_id":null,"name":"Computers
+        \u0026 Electronics","reselling_exposed_on":"1970-01-01 00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4140,"ym_profile_id":null,"parent_category_id":null,"name":"Arts
+        \u0026 Entertainment","reselling_exposed_on":"1970-01-01 00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4141,"ym_profile_id":null,"parent_category_id":null,"name":"Finance","reselling_exposed_on":"1970-01-01
+        00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4142,"ym_profile_id":null,"parent_category_id":null,"name":"Food
+        \u0026 Drink","reselling_exposed_on":"1970-01-01 00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4143,"ym_profile_id":null,"parent_category_id":null,"name":"Games","reselling_exposed_on":"1970-01-01
+        00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4144,"ym_profile_id":null,"parent_category_id":null,"name":"Health","reselling_exposed_on":"1970-01-01
+        00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4145,"ym_profile_id":null,"parent_category_id":null,"name":"Home
+        \u0026 Garden","reselling_exposed_on":"1970-01-01 00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4146,"ym_profile_id":null,"parent_category_id":null,"name":"Industries","reselling_exposed_on":"1970-01-01
+        00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4147,"ym_profile_id":null,"parent_category_id":null,"name":"Internet
+        \u0026 Telecom","reselling_exposed_on":"1970-01-01 00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4148,"ym_profile_id":null,"parent_category_id":null,"name":"Lifestyles","reselling_exposed_on":"1970-01-01
+        00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4149,"ym_profile_id":null,"parent_category_id":null,"name":"Local
+        News","reselling_exposed_on":"1970-01-01 00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4150,"ym_profile_id":null,"parent_category_id":null,"name":"News","reselling_exposed_on":"1970-01-01
+        00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4151,"ym_profile_id":null,"parent_category_id":null,"name":"Online
+        Communities","reselling_exposed_on":"1970-01-01 00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4152,"ym_profile_id":null,"parent_category_id":null,"name":"Photo
+        \u0026 Video Sharing","reselling_exposed_on":"1970-01-01 00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4153,"ym_profile_id":null,"parent_category_id":null,"name":"Real
+        Estate","reselling_exposed_on":"1970-01-01 00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4154,"ym_profile_id":null,"parent_category_id":null,"name":"Recreation","reselling_exposed_on":"1970-01-01
+        00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4155,"ym_profile_id":null,"parent_category_id":null,"name":"Reference
+        \u0026 Language","reselling_exposed_on":"1970-01-01 00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4156,"ym_profile_id":null,"parent_category_id":null,"name":"Science","reselling_exposed_on":"1970-01-01
+        00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4157,"ym_profile_id":null,"parent_category_id":null,"name":"Shopping","reselling_exposed_on":"1970-01-01
+        00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4158,"ym_profile_id":null,"parent_category_id":null,"name":"Society","reselling_exposed_on":"1970-01-01
+        00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4159,"ym_profile_id":null,"parent_category_id":null,"name":"Sports","reselling_exposed_on":"1970-01-01
+        00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4160,"ym_profile_id":null,"parent_category_id":null,"name":"Consumer
+        Electronics","reselling_exposed_on":"1970-01-01 00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":4161,"ym_profile_id":null,"parent_category_id":null,"name":"Travel","reselling_exposed_on":"1970-01-01
+        00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null},{"id":46953,"ym_profile_id":null,"parent_category_id":null,"name":"rspec","reselling_exposed_on":"1970-01-01
+        00:00:01","code":null,"reselling_exposure":"private","is_system":false,"description":null}],"inventory_trust":{"default_trust":"seller","default_allow_unaudited":true},"seller_member_groups":null,"default_creatives":null,"standard_sizes":[{"width":100,"height":72,"is_standard":false},{"width":120,"height":600,"is_standard":true},{"width":160,"height":600,"is_standard":true},{"width":180,"height":150,"is_standard":false},{"width":200,"height":200,"is_standard":false},{"width":234,"height":600,"is_standard":false},{"width":250,"height":250,"is_standard":false},{"width":300,"height":250,"is_standard":true},{"width":300,"height":600,"is_standard":true},{"width":430,"height":600,"is_standard":false},{"width":468,"height":60,"is_standard":true},{"width":728,"height":90,"is_standard":true}],"deal_types":null,"serving_domain":null,"contracts":[{"creative_size_minimum_bytes":40960,"creative_size_fee_per_gb":"2.50","ad_serving_cpm":"0.0200","seller_type":"platform","pricing_version":"2013.01.02","seller_console_buyer_revshare_pct":"14.00","seller_bidder_buyer_revshare_pct":"14.00","auction_revshare_platform_inv_pct":"10.00","auction_revshare_platform_inv_type":"deduction","auction_revshare_partner_inv_pct":"10.00","auction_revshare_partner_inv_type":"deduction","is_active":true}],"contact_info":[{"name":"Vishal
+        Bhalla","title":"Manager","email":"vishal@lumoslabs.com","phone":"","address":"","address_2":"","city":"","country":"","region":"","postal_code":"","additional_info":"Lumosity
+        is a company focused on cognitive improvement through \u0022Brain Training.\u0022  We
+        offer a series of online courses that help users improve core mental abilities.  The
+        design is driven by academic research and each game is an exercise to improve
+        specific areas such as problem solving, memory training or quantitative reasoning.
+        Some courses are designed for medical conditions such as Traumatic Brain Injury.
+        As users become proficient in a game, it is automatically adjusted to increase
+        in difficulty in order to continue to stimulate brain development through
+        ongoing challenge.\n\nThe positioning of our offering is \u201ca gym for your
+        brain.\u201d  Just as people put time and money into a gym to maintain their
+        physical health, they should do the same to maintain their cognitive function
+        as they age and\/or improve their cognitive function for success in everyday
+        life (the workplace,in school, etc.).  This positioning resonates well with
+        a health \u0026 fitness audience we know to be interested in improving themselves.","website_url":null,"types":["demand"]}],"features":null,"member_brand_exceptions":null,"thirdparty_pixels":null,"floor_optimization":null,"native_custom_keys":null,"mediation":{"auto_bid_adjustment_enabled":false,"reporting_sync_enabled":false},"server_of_record":null,"macros":null,"active_contract":{}},"count":1,"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":4,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":0,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":2,"read_limit":1000,"read_limit_seconds":60,"writes":0,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"afb33a28-a588-5021-90ad-9522e8d778c7","warnings":[],"time":34.898042678833,"start_microtime":1486552561.0146,"version":"1.17.202","slave_miss":"no_slaves_found","slave_lag":1034100,"member_last_modified_age":59,"output_term":"member"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 11:15:59 GMT
+recorded_with: VCR 3.0.3
