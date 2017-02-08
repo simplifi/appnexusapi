@@ -1,0 +1,216 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-test.appnexus.com/auth
+    body:
+      encoding: UTF-8
+      string: '{"auth":{"username":"<APPNEXUS_USERNAME>","password":"<APPNEXUS_PASSWORD>"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '698'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 12:26:13 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589b0e661683f%3Anym2; Path=/
+      X-Route:
+      - "/auth"
+      X-Route-Time:
+      - '1062'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","token":"hbapi:171678:589b0e661683f:nym2","dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","parent_dbg_info":{"instance":"01.api.test104169.nym2","slave_hit":false,"db":"master","awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"3eb89d09-3c69-508f-9cd8-28c93ed65306","warnings":[],"time":623.77214431763,"start_microtime":1486556773.1278,"version":"1.17","output_term":"not_found"},"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"5dc1347d-7191-5a37-ad3e-e51dff12ad76","warnings":[],"time":1050.409078598,"start_microtime":1486556773.1023,"version":"1.17.202","slave_lag":1038313,"output_term":"not_found"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 12:26:12 GMT
+- request:
+    method: post
+    uri: https://api-test.appnexus.com/advertiser
+    body:
+      encoding: UTF-8
+      string: '{"advertiser":{"name":"rspec advertiser"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:589b0e661683f:nym2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '1641'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 12:26:14 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589b0e661683f%3Anym2; Path=/
+      X-Count-Read:
+      - user:3,member:1,serviceHostUser:0,serviceHostMember:0,hostUser:0,hostMember:0,ip:0
+      X-Count-Write:
+      - user:3,member:3,serviceHostUser:3,serviceHostMember:3,hostUser:3,hostMember:3,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/advertiser"
+      X-Route-Time:
+      - '300'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","count":1,"id":1561305,"start_element":0,"num_elements":100,"advertiser":{"id":1561305,"code":null,"name":"rspec
+        advertiser","state":"active","default_brand_id":null,"remarketing_segment_id":null,"profile_id":null,"control_pct":0,"timezone":"EST5EDT","last_modified":"2017-02-08
+        12:26:14","member_id":487,"billing_name":null,"billing_phone":null,"billing_address1":null,"billing_address2":null,"billing_city":null,"billing_state":null,"billing_country":null,"billing_zip":null,"default_currency":"USD","use_insertion_orders":false,"time_format":"12-hour","is_malicious":false,"is_mediated":false,"billing_internal_user":null,"default_category":null,"default_brand":null,"labels":null,"competitive_brands":null,"competitive_categories":null,"thirdparty_pixels":null,"macros":null,"lifetime_budget":null,"lifetime_budget_imps":null,"daily_budget":null,"daily_budget_imps":null,"enable_pacing":null,"allow_safety_pacing":null,"lifetime_pacing":null,"lifetime_pacing_span":null,"lifetime_pacing_pct":null},"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":3,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":3,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":1,"read_limit":1000,"read_limit_seconds":60,"writes":3,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":true,"uuid":"e715d5ee-6a23-5f94-bd22-d9399a2b960e","warnings":[],"time":284.1329574585,"start_microtime":1486556774.5504,"version":"1.17.202","slave_lag":1038313,"member_last_modified_age":1486556774,"output_term":"advertiser"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 12:26:13 GMT
+- request:
+    method: post
+    uri: https://api-test.appnexus.com/creative?advertiser_id=1561305
+    body:
+      encoding: UTF-8
+      string: '{"creative":{"name":"rspec test creative","content":"<iframe src=\"helloword.html\"></iframe>","width":"300","height":"250","template":{"id":7}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:589b0e661683f:nym2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '3044'
+      Content-Type:
+      - application/json
+      X-Count-Read:
+      - user:3,member:1,serviceHostUser:1,serviceHostMember:1,hostUser:1,hostMember:1,ip:0
+      X-Count-Write:
+      - user:4,member:4,serviceHostUser:1,serviceHostMember:1,hostUser:1,hostMember:1,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/creative"
+      X-Route-Time:
+      - '209'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","count":1,"id":62215784,"start_element":0,"num_elements":100,"creative":{"name":"rspec
+        test creative","brand_id":1,"media_url":null,"id":62215784,"code":null,"code2":null,"member_id":487,"state":"active","click_track_result":"not_tested","advertiser_id":1561305,"publisher_id":null,"format":"iframe-html","width":300,"height":250,"click_url":null,"flash_click_variable":null,"no_iframes":false,"content":"<iframe
+        src=\"helloword.html\"><\/iframe>","original_content":null,"file_name":null,"track_clicks":true,"audit_status":"pending","macros":null,"profile_id":null,"audit_feedback":null,"is_prohibited":false,"created_on":"2017-02-08
+        12:26:15","flash_backup_url":null,"last_modified":"2017-02-08 12:26:15","is_control":false,"allow_audit":true,"is_expired":false,"creative_upload_status":null,"backup_upload_status":null,"use_dynamic_click_url":false,"media_subtypes":["banner"],"size_in_bytes":0,"is_self_audited":false,"no_adservers":false,"text_title":null,"text_description":null,"text_display_url":null,"click_action":"click-to-web","click_target":null,"ssl_status":"disabled","allow_ssl_audit":false,"media_url_secure":null,"content_secure":null,"original_content_secure":null,"flash_backup_url_secure":null,"is_hosted":false,"content_source":"standard","lifetime_budget":null,"lifetime_budget_imps":null,"daily_budget":null,"daily_budget_imps":null,"enable_pacing":null,"allow_safety_pacing":null,"landing_page_url":null,"thirdparty_creative_id":null,"thirdparty_campaign_id":null,"facebook_audit_status":null,"facebook_audit_feedback":null,"custom_request_template":null,"language":{"id":1,"name":"English"},"pop_values":null,"brand":{"id":1,"name":"Unknown","category_id":0},"template":{"id":7,"name":"Standard","media_subtype_id":1,"format_id":7},"ios_ssl_audit":null,"adx_audit":null,"thirdparty_page":null,"custom_macros":null,"segments":null,"folder":null,"campaigns":null,"line_items":null,"competitive_brands":null,"competitive_categories":null,"pixels":null,"mobile":null,"video_attribute":null,"media_assets":null,"sla":null,"thirdparty_pixels":null,"native":null,"click_trackers":null,"impression_trackers":null,"thirdparty_viewability_providers":null,"status":{"user_ready":true,"hosted_assets_association_complete":null},"sla_eta":null,"currency":"USD","type":"standard"},"dbg_info":{"instance":"01.creative-api.test104169.nym2","db":"","output_term":"creative","parent_dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":3,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":4,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":1,"read_limit":1000,"read_limit_seconds":60,"writes":4,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":true,"uuid":"0a699b10-3a46-5b30-9877-f0653972c4ac","warnings":[],"time":167.76895523071,"start_microtime":1.4865567752787E9,"version":"1.17.202","slave_lag":1038313,"member_last_modified_age":1486556775,"output_term":"creative"},"proxy":true}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 12:26:13 GMT
+- request:
+    method: delete
+    uri: https://api-test.appnexus.com/advertiser?id=1561305
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:589b0e661683f:nym2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '694'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 12:26:15 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589b0e661683f%3Anym2; Path=/
+      X-Count-Read:
+      - user:3,member:1,serviceHostUser:0,serviceHostMember:0,hostUser:0,hostMember:0,ip:0
+      X-Count-Write:
+      - user:5,member:5,serviceHostUser:4,serviceHostMember:4,hostUser:4,hostMember:4,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/advertiser"
+      X-Route-Time:
+      - '1096'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","count":1,"start_element":null,"num_elements":null,"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":true,"db":"10.3.204.17","user::reads":3,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":5,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":1,"read_limit":1000,"read_limit_seconds":60,"writes":5,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"e6f6968d-5565-54f4-8c80-637f4170565e","warnings":[],"time":1077.409029007,"start_microtime":1486556775.8896,"version":"1.17.202","slave_lag":1038313,"member_last_modified_age":1486556775,"output_term":"not_found"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 12:26:15 GMT
+recorded_with: VCR 3.0.3

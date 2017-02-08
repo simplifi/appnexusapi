@@ -14,13 +14,12 @@ end
 
 shared_context 'with a publisher' do
   let(:publisher_service) { AppnexusApi::PublisherService.new(connection) }
-
   let(:publisher) { publisher_service.create(publisher_url_params, publisher_params) }
   let(:publisher_url_params) { { create_default_placement: false } }
   let(:publisher_params) do
     {
       name: "spec publisher",
-      code: code,
+      code: 'spec_publisher_code',
       expose_domains: true,
       reselling_exposure: "public",
       ad_quality_advanced_mode_enabled: true

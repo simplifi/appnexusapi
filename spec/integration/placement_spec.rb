@@ -1,40 +1,26 @@
 require 'spec_helper'
 
-describe "AppNexus Site" do
-  before(:all) do
-    @connection = connection
-    @publisher_service = AppnexusApi::PublisherService.new(@connection)
-    @site_service      = AppnexusApi::SiteService.new(@connection)
-    @placement_service = AppnexusApi::PlacementService.new(@connection)
-  end
+describe AppnexusApi::PlacementService do
+  include_context 'with a publisher'
+
+  let(:placement_service) { described_class.new(connection) }
+  let(:code) { "spec_pub_code" }
 
   it "default placement" do
+    VCR.use_cassette('placement_service_default_placement') do
+      # now grab the default site
+      default_site = AppnexusApi::SiteService.new(connection).get(
+        id: publisher.default_site_id,
+        publisher_id: publisher.id
+      ).first
 
-    # have to create a publisher first
-    code = "spec_pub_code_#{Time.now.to_i}_#{rand(9_000_000)}"
-    # new_publisher_url_params = { create_default_placement: true }
-    new_publisher_url_params = { }
-    new_publisher_params = {
-      name: "Publisher Foo Name",
-      code: code,
-      expose_domains: true,
-      reselling_exposure: "public",
-      ad_quality_advanced_mode_enabled: true
-    }
+      # grab the default placement
+      default_placement = placement_service.get(id: default_site.placements.first["id"]).first
+      default_placement.name.should  == "[Publisher Name] - Default"
+      default_placement.state.should == "active"
 
-    publisher = @publisher_service.create(new_publisher_url_params,
-                                          new_publisher_params)
-
-    # now grab the default site
-    default_site = @site_service.get(id: publisher.default_site_id, publisher_id: publisher.id).first
-
-
-    # grab the default placement
-    default_placement = @placement_service.get(id: default_site.placements.first["id"]).first
-    default_placement.name.should  == "[Publisher Foo Name] - Default"
-    default_placement.state.should == "active"
-
-    default_site.delete
-    publisher.delete
+      default_site.delete
+      publisher.delete
+    end
   end
 end

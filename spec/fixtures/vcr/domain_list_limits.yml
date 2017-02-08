@@ -1,0 +1,105 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-test.appnexus.com/auth
+    body:
+      encoding: UTF-8
+      string: '{"auth":{"username":"<APPNEXUS_USERNAME>","password":"<APPNEXUS_PASSWORD>"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '699'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 12:28:19 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589b0ee52160d%3Anym2; Path=/
+      X-Route:
+      - "/auth"
+      X-Route-Time:
+      - '1398'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","token":"hbapi:171678:589b0ee52160d:nym2","dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","parent_dbg_info":{"instance":"01.api.test104169.nym2","slave_hit":false,"db":"master","awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"56b8334e-0ae3-5997-99ca-a2063a036e95","warnings":[],"time":806.81204795837,"start_microtime":1486556899.9937,"version":"1.17","output_term":"not_found"},"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"06c74fe5-2479-50cd-857f-f50e0f7ca17e","warnings":[],"time":1385.3869438171,"start_microtime":1486556899.9693,"version":"1.17.202","slave_lag":1038440,"output_term":"not_found"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 12:28:19 GMT
+- request:
+    method: get
+    uri: https://api-test.appnexus.com/object-limit?num_elements=100&object_type=domain_list&start_element=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:589b0ee52160d:nym2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '877'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 12:28:21 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589b0ee52160d%3Anym2; Path=/
+      X-Count-Read:
+      - user:6,member:3,serviceHostUser:3,serviceHostMember:3,hostUser:3,hostMember:3,ip:0
+      X-Count-Write:
+      - user:0,member:0,serviceHostUser:0,serviceHostMember:0,hostUser:0,hostMember:0,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/object-limit"
+      X-Route-Time:
+      - '28'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","start_element":null,"num_elements":null,"object-limits":[{"object_type":"domain_list","limit":null,"mapping_limits":{"domains":30000},"count_active":null,"count_inactive":null,"count_total":null}],"count":null,"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":6,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":0,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":3,"read_limit":1000,"read_limit_seconds":60,"writes":0,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"73123371-bd28-54f9-a252-e9fd1ef1dda2","warnings":[],"time":18.278121948242,"start_microtime":1486556901.8267,"version":"1.17.202","slave_miss":"no_slaves_found","slave_lag":1038444,"member_last_modified_age":4,"output_term":"object-limits"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 12:28:19 GMT
+recorded_with: VCR 3.0.3

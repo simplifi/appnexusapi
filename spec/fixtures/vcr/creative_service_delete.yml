@@ -1,0 +1,108 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-test.appnexus.com/auth
+    body:
+      encoding: UTF-8
+      string: '{"auth":{"username":"<APPNEXUS_USERNAME>","password":"<APPNEXUS_PASSWORD>"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '699'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 12:26:22 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589b0e6f8de21%3Anym2; Path=/
+      X-Route:
+      - "/auth"
+      X-Route-Time:
+      - '1392'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","token":"hbapi:171678:589b0e6f8de21:nym2","dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","parent_dbg_info":{"instance":"01.api.test104169.nym2","slave_hit":false,"db":"master","awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"98016eef-46d9-54f6-8127-1c54c67d95ec","warnings":[],"time":793.86878013611,"start_microtime":1486556782.4474,"version":"1.17","output_term":"not_found"},"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"bf646f2a-ceb1-50e1-a04c-7a1c5b6060c8","warnings":[],"time":1376.6980171204,"start_microtime":1486556782.4232,"version":"1.17.202","slave_lag":1038323,"output_term":"not_found"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 12:26:21 GMT
+- request:
+    method: post
+    uri: https://api-test.appnexus.com/advertiser
+    body:
+      encoding: UTF-8
+      string: '{"advertiser":{"name":"rspec advertiser"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:589b0e6f8de21:nym2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '789'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Feb 2017 12:26:24 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A589b0e6f8de21%3Anym2; Path=/
+      X-Count-Read:
+      - user:5,member:1,serviceHostUser:0,serviceHostMember:0,hostUser:0,hostMember:0,ip:0
+      X-Count-Write:
+      - user:9,member:9,serviceHostUser:6,serviceHostMember:6,hostUser:6,hostMember:6,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/advertiser"
+      X-Route-Time:
+      - '56'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"error_id":"SYNTAX","error":"given advertiser name already
+        exists in the system","error_description":null,"service":"advertiser","method":"POST","error_code":null,"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":5,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":9,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":1,"read_limit":1000,"read_limit_seconds":60,"writes":9,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"d6c18513-836d-5b29-9d66-a0b023bce14e","warnings":[],"time":42.782068252563,"start_microtime":1486556784.1814,"version":"1.17.202","slave_lag":1038323,"member_last_modified_age":1486556784,"output_term":"not_found"}}}'
+    http_version: 
+  recorded_at: Wed, 08 Feb 2017 12:26:22 GMT
+recorded_with: VCR 3.0.3
