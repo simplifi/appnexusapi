@@ -4,6 +4,7 @@ require 'logger'
 require 'vcr'
 require 'webmock'
 require_relative '../lib/appnexusapi'
+Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
 
 DEFAULT_SPEC_USERNAME = 'user'
 DEFAULT_SPEC_PASSWORD = 'pass'
@@ -14,22 +15,14 @@ module SpecWithConnection
   extend RSpec::SharedContext
 
   let(:test_logger) { Logger.new('./log/test.log') }
-
-  let(:connection) do
-    AppnexusApi::Connection.new(
-      'username' => ENV['APPNEXUS_USERNAME'],
-      'password' => ENV['APPNEXUS_PASSWORD'],
-      'uri'      => ENV['APPNEXUS_URI'],
-      'logger'   => test_logger
-    )
-  end
-
-  let(:connection_with_null_logger) do
-    AppnexusApi::Connection.new(
+  let(:connection) { AppnexusApi::Connection.new(connection_params.merge('logger' => test_logger)) }
+  let(:connection_with_null_logger) { AppnexusApi::Connection.new(connection_params) }
+  let(:connection_params) do
+    {
       'username' => ENV['APPNEXUS_USERNAME'],
       'password' => ENV['APPNEXUS_PASSWORD'],
       'uri'      => ENV['APPNEXUS_URI']
-    )
+    }
   end
 end
 

@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 describe AppnexusApi::CampaignService do
-  let(:advertiser_params) { { name: 'rspec advertiser' } }
-  let(:advertiser) { AppnexusApi::AdvertiserService.new(connection).create({}, advertiser_params) }
-  let(:advertiser_id) { advertiser.id }
+  include_context 'with an advertiser'
+
   let(:url_params) { { advertiser_id: advertiser_id } }
   let(:campaign_name) { 'campaign name' }
   let(:new_line_item_params) { { name: 'some line item', code: 'spec_line_code' } }

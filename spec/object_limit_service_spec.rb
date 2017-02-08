@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe AppnexusApi::ObjectLimitService do
-  let(:object_limit_service) do
-    AppnexusApi::ObjectLimitService.new(connection)
-  end
+  let(:object_limit_service) { described_class.new(connection) }
 
   it "returns info about your current creative limits" do
     creative_limits = object_limit_service.creative_limits.raw_json
@@ -21,4 +19,3 @@ describe AppnexusApi::ObjectLimitService do
     expect(domain_list_limits["object_type"]).to eq "domain_list"
   end
 end
-
