@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe AppnexusApi::PublisherService do
   include_context 'with a publisher'
-  let(:code) { 'spec_code_publisher'}
+  let(:code) { 'spec_code_publisher' }
 
   it "cruds" do
     VCR.use_cassette('publisher_crud') do
