@@ -64,7 +64,7 @@ class AppnexusApi::Connection
   end
 
   def run_request(method, route, body, headers)
-    login if !is_authorized?
+    login unless is_authorized?
     response = {}
     begin
       loop do

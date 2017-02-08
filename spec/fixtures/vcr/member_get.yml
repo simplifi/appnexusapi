@@ -27,7 +27,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 08 Feb 2017 11:15:59 GMT
+      - Wed, 08 Feb 2017 12:59:03 GMT
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
       Pragma:
@@ -35,16 +35,16 @@ http_interactions:
       Server:
       - Apache
       Set-Cookie:
-      - HBFAPI_SESSID=hbapi%3A171678%3A589afdf061874%3Anym2; Path=/
+      - HBFAPI_SESSID=hbapi%3A171678%3A589b1618be664%3Anym2; Path=/
       X-Route:
       - "/auth"
       X-Route-Time:
-      - '1227'
+      - '1384'
     body:
       encoding: UTF-8
-      string: '{"response":{"status":"OK","token":"hbapi:171678:589afdf061874:nym2","dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","parent_dbg_info":{"instance":"01.api.test104169.nym2","slave_hit":false,"db":"master","awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"fb8f7da1-1db8-5749-bdf8-0e44870d7b89","warnings":[],"time":796.40293121338,"start_microtime":1486552559.2726,"version":"1.17","output_term":"not_found"},"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"e2e33e1f-b5b9-55f1-8309-cefd907f1bd4","warnings":[],"time":1217.1049118042,"start_microtime":1486552559.2515,"version":"1.17.202","slave_lag":1034100,"output_term":"not_found"}}}'
+      string: '{"response":{"status":"OK","token":"hbapi:171678:589b1618be664:nym2","dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","parent_dbg_info":{"instance":"01.api.test104169.nym2","slave_hit":false,"db":"master","awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"17c66db1-919b-56d7-9644-d1c32255ccf6","warnings":[],"time":793.48993301392,"start_microtime":1486558743.6533,"version":"1.17","output_term":"not_found"},"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"420f9790-3e57-5c44-bcc3-197ccc87a73f","warnings":[],"time":1370.8100318909,"start_microtime":1486558743.6272,"version":"1.17.202","slave_lag":1040284,"output_term":"not_found"}}}'
     http_version: 
-  recorded_at: Wed, 08 Feb 2017 11:15:58 GMT
+  recorded_at: Wed, 08 Feb 2017 12:59:03 GMT
 - request:
     method: get
     uri: https://api-test.appnexus.com/member?num_elements=100&start_element=0
@@ -55,7 +55,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - hbapi:171678:589afdf061874:nym2
+      - hbapi:171678:589b1618be664:nym2
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -70,7 +70,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 08 Feb 2017 11:16:01 GMT
+      - Wed, 08 Feb 2017 12:59:05 GMT
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
       Pragma:
@@ -78,13 +78,13 @@ http_interactions:
       Server:
       - Apache
       Set-Cookie:
-      - HBFAPI_SESSID=hbapi%3A171678%3A589afdf061874%3Anym2; Path=/
+      - HBFAPI_SESSID=hbapi%3A171678%3A589b1618be664%3Anym2; Path=/
       Transfer-Encoding:
       - chunked
       X-Count-Read:
-      - user:4,member:2,serviceHostUser:2,serviceHostMember:2,hostUser:2,hostMember:2,ip:0
+      - user:23,member:13,serviceHostUser:1,serviceHostMember:1,hostUser:10,hostMember:10,ip:0
       X-Count-Write:
-      - user:0,member:0,serviceHostUser:0,serviceHostMember:0,hostUser:0,hostMember:0,ip:0
+      - user:29,member:29,serviceHostUser:0,serviceHostMember:0,hostUser:24,hostMember:24,ip:0
       X-Ratelimit-Read:
       - '1000'
       X-Ratelimit-Service:
@@ -96,7 +96,7 @@ http_interactions:
       X-Route:
       - "/member"
       X-Route-Time:
-      - '38'
+      - '42'
     body:
       encoding: UTF-8
       string: '{"response":{"status":"OK","start_element":0,"num_elements":100,"member":{"id":487,"name":"Lumos
@@ -144,7 +144,7 @@ http_interactions:
         physical health, they should do the same to maintain their cognitive function
         as they age and\/or improve their cognitive function for success in everyday
         life (the workplace,in school, etc.).  This positioning resonates well with
-        a health \u0026 fitness audience we know to be interested in improving themselves.","website_url":null,"types":["demand"]}],"features":null,"member_brand_exceptions":null,"thirdparty_pixels":null,"floor_optimization":null,"native_custom_keys":null,"mediation":{"auto_bid_adjustment_enabled":false,"reporting_sync_enabled":false},"server_of_record":null,"macros":null,"active_contract":{}},"count":1,"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":4,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":0,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":2,"read_limit":1000,"read_limit_seconds":60,"writes":0,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"afb33a28-a588-5021-90ad-9522e8d778c7","warnings":[],"time":34.898042678833,"start_microtime":1486552561.0146,"version":"1.17.202","slave_miss":"no_slaves_found","slave_lag":1034100,"member_last_modified_age":59,"output_term":"member"}}}'
+        a health \u0026 fitness audience we know to be interested in improving themselves.","website_url":null,"types":["demand"]}],"features":null,"member_brand_exceptions":null,"thirdparty_pixels":null,"floor_optimization":null,"native_custom_keys":null,"mediation":{"auto_bid_adjustment_enabled":false,"reporting_sync_enabled":false},"server_of_record":null,"macros":null,"active_contract":{}},"count":1,"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":23,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":29,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":13,"read_limit":1000,"read_limit_seconds":60,"writes":29,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":true,"uuid":"b09bd6ff-c8d6-53f5-9548-cfd5079992ec","warnings":[],"time":36.946058273315,"start_microtime":1486558745.4658,"version":"1.17.202","slave_miss":"no_slaves_found","slave_lag":1040288,"member_last_modified_age":242,"output_term":"member"}}}'
     http_version: 
-  recorded_at: Wed, 08 Feb 2017 11:15:59 GMT
+  recorded_at: Wed, 08 Feb 2017 12:59:03 GMT
 recorded_with: VCR 3.0.3

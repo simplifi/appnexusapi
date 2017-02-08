@@ -29,6 +29,20 @@ end
 RSpec.configure do |config|
   config.before(:suite) do
     FileUtils.mkdir_p('./log')
+
+    if ENV['APPNEXUS_USERNAME'] && ENV['APPNEXUS_PASSWORD']
+      puts 'Attempting to destroy rspec created records on the Appnexus test server...'
+      connection_params = {
+        'username' => ENV['APPNEXUS_USERNAME'],
+        'password' => ENV['APPNEXUS_PASSWORD'],
+        'uri'      => ENV['APPNEXUS_URI'] || 'https://api-test.appnexus.com'
+      }
+
+      connection = AppnexusApi::Connection.new(connection_params.merge('logger' => Logger.new('./log/test.log')))
+
+      AppnexusApi::PublisherService.new(connection).get.each { |p| p.delete if p.name =~ /spec/ || p.code =~ /spec/ }
+      AppnexusApi::AdvertiserService.new(connection).get.each { |a| a.delete if a.name =~ /spec/ }
+    end
   end
 
   config.filter_run_excluding slow: true

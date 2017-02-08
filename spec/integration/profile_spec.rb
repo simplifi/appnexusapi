@@ -17,7 +17,7 @@ describe AppnexusApi::ProfileService do
 
       profile = profile_service.create(advertiser_url_params, profile_params)
       expect(profile.description).to eq(profile_descript)
-      expect(profile.country_targets.to eq([{ "id"=>233,"code"=>"US", "name"=>"United States" }])
+      expect(profile.country_targets).to eq([{ "id"=>233,"code"=>"US", "name"=>"United States", "active"=>true }])
 
       new_line_item = line_item_service.create(advertiser_url_params, line_item_params.merge(profile_id: profile.id))
       new_line_item.profile_id.should == profile.id

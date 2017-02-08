@@ -23,11 +23,11 @@ http_interactions:
       Cache-Control:
       - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
       Content-Length:
-      - '699'
+      - '698'
       Content-Type:
       - application/json
       Date:
-      - Wed, 08 Feb 2017 12:28:17 GMT
+      - Wed, 08 Feb 2017 12:59:33 GMT
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
       Pragma:
@@ -35,16 +35,16 @@ http_interactions:
       Server:
       - Apache
       Set-Cookie:
-      - HBFAPI_SESSID=hbapi%3A171678%3A589b0ee2d2ac0%3Anym2; Path=/
+      - HBFAPI_SESSID=hbapi%3A171678%3A589b1636d57f3%3Anym2; Path=/
       X-Route:
       - "/auth"
       X-Route-Time:
-      - '1378'
+      - '1402'
     body:
       encoding: UTF-8
-      string: '{"response":{"status":"OK","token":"hbapi:171678:589b0ee2d2ac0:nym2","dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","parent_dbg_info":{"instance":"01.api.test104169.nym2","slave_hit":false,"db":"master","awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"6352b0b1-39c9-53a8-8def-db57673142b4","warnings":[],"time":792.31595993042,"start_microtime":1486556897.7381,"version":"1.17","output_term":"not_found"},"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"baaa5351-0ca2-54d8-b780-a7af38e5932d","warnings":[],"time":1366.0769462585,"start_microtime":1486556897.7155,"version":"1.17.202","slave_lag":1038440,"output_term":"not_found"}}}'
+      string: '{"response":{"status":"OK","token":"hbapi:171678:589b1636d57f3:nym2","dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","parent_dbg_info":{"instance":"01.api.test104169.nym2","slave_hit":false,"db":"master","awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"5c8221ad-5890-5a4a-89a1-747f3c37ea1f","warnings":[],"time":795.01104354858,"start_microtime":1486558773.7293,"version":"1.17","output_term":"not_found"},"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"456893f6-e153-57fe-b2a9-35fc64ab2955","warnings":[],"time":1388.423204422,"start_microtime":1486558773.7045,"version":"1.17.202","slave_lag":1040309,"output_term":"not_found"}}}'
     http_version: 
-  recorded_at: Wed, 08 Feb 2017 12:28:17 GMT
+  recorded_at: Wed, 08 Feb 2017 12:59:33 GMT
 - request:
     method: get
     uri: https://api-test.appnexus.com/object-limit?num_elements=100&object_type=profile&start_element=0
@@ -55,7 +55,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - hbapi:171678:589b0ee2d2ac0:nym2
+      - hbapi:171678:589b1636d57f3:nym2
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -68,11 +68,11 @@ http_interactions:
       Cache-Control:
       - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
       Content-Length:
-      - '1094'
+      - '1096'
       Content-Type:
       - application/json
       Date:
-      - Wed, 08 Feb 2017 12:28:19 GMT
+      - Wed, 08 Feb 2017 12:59:35 GMT
       Expires:
       - Thu, 19 Nov 1981 08:52:00 GMT
       Pragma:
@@ -80,11 +80,11 @@ http_interactions:
       Server:
       - Apache
       Set-Cookie:
-      - HBFAPI_SESSID=hbapi%3A171678%3A589b0ee2d2ac0%3Anym2; Path=/
+      - HBFAPI_SESSID=hbapi%3A171678%3A589b1636d57f3%3Anym2; Path=/
       X-Count-Read:
-      - user:4,member:2,serviceHostUser:2,serviceHostMember:2,hostUser:2,hostMember:2,ip:0
+      - user:14,member:6,serviceHostUser:2,serviceHostMember:2,hostUser:6,hostMember:6,ip:0
       X-Count-Write:
-      - user:0,member:0,serviceHostUser:0,serviceHostMember:0,hostUser:0,hostMember:0,ip:0
+      - user:6,member:6,serviceHostUser:0,serviceHostMember:0,hostUser:6,hostMember:6,ip:0
       X-Ratelimit-Read:
       - '1000'
       X-Ratelimit-Service:
@@ -96,10 +96,10 @@ http_interactions:
       X-Route:
       - "/object-limit"
       X-Route-Time:
-      - '27'
+      - '28'
     body:
       encoding: UTF-8
-      string: '{"response":{"status":"OK","start_element":null,"num_elements":null,"object-limits":[{"object_type":"profile","limit":null,"mapping_limits":{"segment_targets":400,"segment_group_targets":400,"publisher_targets":300,"site_targets":100,"placement_targets":250,"inventory_source_targets":500,"platform_content_category_targets":300,"content_category_targets":300,"zip_targets":4000},"count_active":null,"count_inactive":null,"count_total":null}],"count":null,"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":4,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":0,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":2,"read_limit":1000,"read_limit_seconds":60,"writes":0,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"92ea1004-5ed0-5d05-be80-76a2c7f73790","warnings":[],"time":17.93909072876,"start_microtime":1486556899.5727,"version":"1.17.202","slave_miss":"no_slaves_found","slave_lag":1038440,"member_last_modified_age":2,"output_term":"object-limits"}}}'
+      string: '{"response":{"status":"OK","start_element":null,"num_elements":null,"object-limits":[{"object_type":"profile","limit":null,"mapping_limits":{"segment_targets":400,"segment_group_targets":400,"publisher_targets":300,"site_targets":100,"placement_targets":250,"inventory_source_targets":500,"platform_content_category_targets":300,"content_category_targets":300,"zip_targets":4000},"count_active":null,"count_inactive":null,"count_total":null}],"count":null,"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":14,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":6,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":6,"read_limit":1000,"read_limit_seconds":60,"writes":6,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"0f9c6127-da98-530f-881b-479445250612","warnings":[],"time":18.856048583984,"start_microtime":1486558775.5585,"version":"1.17.202","slave_miss":"no_slaves_found","slave_lag":1040318,"member_last_modified_age":2,"output_term":"object-limits"}}}'
     http_version: 
-  recorded_at: Wed, 08 Feb 2017 12:28:17 GMT
+  recorded_at: Wed, 08 Feb 2017 12:59:33 GMT
 recorded_with: VCR 3.0.3

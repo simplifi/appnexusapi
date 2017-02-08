@@ -11,22 +11,21 @@ describe AppnexusApi::PaymentRuleService do
   let(:payment_rule_params) do
     {
       code: code,
-      name: "spec payment rule",
-      pricing_type: "cpm",
+      name: 'spec payment rule',
+      pricing_type: 'cpm',
       cost_cpm: initial_cost_cpm
     }
   end
 
-  it "payment rule life cycle" do
+  it 'payment rule life cycle' do
     VCR.use_cassette('payment_rule_lifecycle') do
       payment_rule = payment_rule_service.create(payment_rules_url_params, payment_rule_params)
-      expect(payment_rule.name).to eq("spec payment rule")
+      expect(payment_rule.name).to eq('spec payment rule')
       expect(payment_rule.cost_cpm).to eq(initial_cost_cpm)
 
       updated_rule = payment_rule.update(payment_rules_url_params, { cost_cpm: update_cost_cpm} )
-      expect(updated_rule["cost_cpm"]).to eq(update_cost_cpm)
+      expect(updated_rule['cost_cpm']).to eq(update_cost_cpm)
 
-      # delete the payment rule
       payment_rule.delete
       publisher.delete
     end
