@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe AppnexusApi::PaymentRuleService do
   include_context 'with a publisher'
+
   let(:payment_rule_service) { described_class.new(connection) }
   let(:code) { 'spec_payment_rule_code' }
   let(:payment_rules_url_params) { { publisher_id: publisher['id'] } }

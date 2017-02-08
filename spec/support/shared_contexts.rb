@@ -19,7 +19,7 @@ shared_context 'with a publisher' do
   let(:publisher_url_params) { { create_default_placement: false } }
   let(:publisher_params) do
     {
-      name: "spec payment rule publisher",
+      name: "spec publisher",
       code: code,
       expose_domains: true,
       reselling_exposure: "public",
