@@ -25,7 +25,6 @@ describe AppnexusApi::CreativeService do
       'width'     => '300',
       'height'    => '250',
       'template'  => { 'id' => 7 }
-
     }
   end
 
@@ -84,4 +83,3 @@ describe AppnexusApi::CreativeService do
     end
   end
 end
-

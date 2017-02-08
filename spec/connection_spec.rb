@@ -19,5 +19,4 @@ describe AppnexusApi::Connection do
     end
     expect(subject.run_request(:get, "http://localhost", nil, {})).not_to eq({})
   end
-
 end
