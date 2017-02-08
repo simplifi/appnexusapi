@@ -1,15 +1,8 @@
 require 'spec_helper'
 
-describe "AppNexus User" do
-  before(:all) do
-    @connection = connection
-    @user_service = AppnexusApi::UserService.new(@connection)
-  end
-
-  def current_user
-    @current_user ||= @user_service.get(current:1).first
-  end
-
+describe AppnexusApi::UserService do
+  let(:user_service) { described_class.new(connection) }
+  let(:current_user) { user_service.get(current: 1).first }
   let(:new_user_hash) do
     {
        username: 'rspec_user',
@@ -25,7 +18,9 @@ describe "AppNexus User" do
   end
 
   it 'returns the current user' do
-    expect(current_user.api_login).to be true
+    VCR.use_cassette('user_login') do
+      expect(current_user.api_login).to be true
+    end
   end
 
   #users aren't delete-able
@@ -34,13 +29,14 @@ describe "AppNexus User" do
   #  expect(@user_service.get(id: @new_user.id).last_name).to eq "test"
   #end
 
-  it 'update' do
-    last_name ||= current_user.last_name
-    current_user.update({}, { last_name: "test" })
-    updated_user = @user_service.get(id: current_user.id).first
-    #restore the last_name before expecting
-    current_user.update({}, { last_name: last_name })
-    expect(updated_user.last_name).to eq "test"
+  it 'updates' do
+    VCR.use_cassette('user_update') do
+      last_name ||= current_user.last_name
+      current_user.update({}, { last_name: "test" })
+      updated_user = user_service.get(id: current_user.id).first
+      #restore the last_name before expecting
+      current_user.update({}, { last_name: last_name })
+      expect(updated_user.last_name).to eq "test"
+    end
   end
-
 end
