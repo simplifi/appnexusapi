@@ -8,5 +8,6 @@ end
 shared_context 'with a new line item' do
   include_context 'with an advertiser'
 
+  let(:line_item_service) { AppnexusApi::LineItemService.new(connection) }
   let(:line_item_params) { { name: 'some line item', code: 'spec_line_code' } }
 end
