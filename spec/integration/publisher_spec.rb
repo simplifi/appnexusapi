@@ -1,21 +1,12 @@
 require 'spec_helper'
 
 describe AppnexusApi::PublisherService do
-  let(:publisher_service) { described_class.new(connection) }
+  include_context 'with a publisher'
+  let(:code) { 'spec_code_publisher'}
 
   it "cruds" do
-    code = "spec_code"
-    new_publisher_params = {
-      name: "Publisher Name",
-      code: code,
-      expose_domains: true,
-      reselling_exposure: "public",
-      ad_quality_advanced_mode_enabled: true
-    }
-
     VCR.use_cassette('publisher_crud') do
-      publisher = publisher_service.create({}, new_publisher_params)
-      expect(publisher.name).to eq "Publisher Name"
+      expect(publisher.name).to eq 'spec publisher'
       expect(publisher.code).to eq code
       expect(publisher.expose_domains).to be true
       expect(publisher.reselling_exposure).to eq "public"
