@@ -1,50 +1,33 @@
 require 'spec_helper'
 
-describe "payment rule service" do
-  before(:all) do
-    @connection = connection
-    @payment_rule_service   = AppnexusApi::PaymentRuleService.new(@connection)
-
-    @code = "spec_payment_rule_code_#{Time.now.to_i}_#{rand(9_000_000)}"
-    @publisher_service = AppnexusApi::PublisherService.new(@connection)
-    code = @code
-    new_publisher_url_params = { create_default_placement: false }
-    new_publisher_params = {
-      name: "spec payment rule publisher",
+describe AppnexusApi::PaymentRuleService do
+  include_context 'with a publisher'
+  let(:payment_rule_service) { described_class.new(connection) }
+  let(:code) { 'spec_payment_rule_code' }
+  let(:payment_rules_url_params) { { publisher_id: publisher['id'] } }
+  let(:initial_cost_cpm) { 1.00 }
+  let(:update_cost_cpm) { 2.00 }
+  let(:payment_rule_params) do
+    {
       code: code,
-      expose_domains: true,
-      reselling_exposure: "public",
-      ad_quality_advanced_mode_enabled: true
+      name: "spec payment rule",
+      pricing_type: "cpm",
+      cost_cpm: initial_cost_cpm
     }
-
-    @publisher = @publisher_service.create(new_publisher_url_params,
-                                           new_publisher_params)
-  end
-
-  after(:all) do
-    @publisher.delete
   end
 
   it "payment rule life cycle" do
-    # create a payment rule
-    url_params = {
-      :publisher_id => @publisher["id"]
-    }
-    params = {
-      :code => @code,
-      :name => "spec payment rule",
-      :pricing_type => "cpm",
-      :cost_cpm => 1.00,
-    }
+    VCR.use_cassette('payment_rule_lifecycle') do
+      payment_rule = payment_rule_service.create(payment_rules_url_params, payment_rule_params)
+      expect(payment_rule.name).to eq("spec payment rule")
+      expect(payment_rule.cost_cpm).to eq(initial_cost_cpm)
 
-    payment_rule = @payment_rule_service.create(url_params, params)
-    payment_rule.name.should == "spec payment rule"
-    payment_rule.cost_cpm.should == 1.00
+      updated_rule = payment_rule.update(payment_rules_url_params, { cost_cpm: update_cost_cpm} )
+      expect(updated_rule["cost_cpm"]).to eq(update_cost_cpm)
 
-    updated_rule = payment_rule.update(url_params, {cost_cpm: 2.00} )
-    updated_rule["cost_cpm"].should == 2.00
-
-    # delete the payment rule
-    payment_rule.delete
+      # delete the payment rule
+      payment_rule.delete
+      publisher.delete
+    end
   end
 end
