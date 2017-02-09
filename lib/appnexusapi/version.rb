@@ -1,3 +1,3 @@
 module AppnexusApi
-  VERSION = '0.1.3.im2'.freeze
+  VERSION = '1.0.0'.freeze
 end
