@@ -29,7 +29,7 @@ Establish a connection:
       # connect to another endpoint, e.g. the staging site could be
       # "uri" => 'http://api-test.appnexus.com',
 
-      
+
     )
 
 Use a Service:
@@ -73,7 +73,15 @@ Use a Service:
 
 ## Testing
 
-There is a rudimentary test suite that centers around creatives/creative_service.  To use it, you'll need to copy the `env_example` file to `.env` and replace the values with your correct values for your account. After that, a simple `bundle exec rspec spec` will run the test suite
+### Running Existing Specs
+```
+bundle exec rspec
+```
+
+### Writing New Specs or Updating Old Ones
+This library uses [VCR](https://github.com/vcr/vcr) and Webmock to record API call HTTP data and play it back when you run the specs.  To write new specs or update old ones, however, you will need to actually provide a valid login/password in a `.env` file (see [`env_example`](env_example) for an example) before launching the specs.
+
+To update a spec, simply remove the relevant file from [spec/fixtures/vcr](spec/fixtures/vcr) (and setup the username/password) before launching `rspec`; the changes will be recorded automatically by VCR.
 
 
 ## Contributing
