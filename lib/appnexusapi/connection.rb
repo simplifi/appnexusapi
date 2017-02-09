@@ -6,7 +6,7 @@ class AppnexusApi::Connection
   RATE_EXCEEDED_DEFAULT_TIMEOUT = 15
   # Inexplicably, sandbox uses the correct code of 429, while production uses 405? so
   # we just rely on the error message
-  RATE_EXCEEDED_ERROR = "RATE_EXCEEDED".freeze
+  RATE_EXCEEDED_ERROR = 'RATE_EXCEEDED'.freeze
 
   def initialize(config)
     @config = config

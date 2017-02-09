@@ -1,7 +1,3 @@
 APPNEXUS_USERNAME=appnexus_user
 APPNEXUS_PASSWORD=HGsgwDdxDVWM
 APPNEXUS_URI=https://api-test.appnexus.com
-
-#If you would like the tests to use an existing advertiser ID, or only have a
-single advertiser ID, set it here.  Otherwise, a new one may be created.
-#APPNEXUS_ADVERTISER_ID=20393
