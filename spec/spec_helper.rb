@@ -19,8 +19,8 @@ module SpecWithConnection
   let(:connection_with_null_logger) { AppnexusApi::Connection.new(connection_params) }
   let(:connection_params) do
     {
-      'username' => ENV['APPNEXUS_USERNAME'],
-      'password' => ENV['APPNEXUS_PASSWORD'],
+      'username' => ENV['APPNEXUS_USERNAME'] || 'user',
+      'password' => ENV['APPNEXUS_PASSWORD'] || 'pass',
       'uri'      => ENV['APPNEXUS_URI'] || 'https://api-test.appnexus.com'
     }
   end
