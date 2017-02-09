@@ -1,16 +1,11 @@
 require 'spec_helper'
 
-describe "AppNexus Advertiser" do
-  pending 'writeme, testme, useme'
-
-  let(:advertiser_service) do
-    AppnexusApi::AdvertiserService.new(connection)
-  end
+describe AppnexusApi::AdvertiserService do
+  let(:advertiser_service) { described_class.new(connection) }
 
   it 'supports a get operation' do
-    expect do
-      advertiser_service.get(num_elements: 1)
-    end.to_not raise_error
+    VCR.use_cassette('advertiser_get') do
+      expect { advertiser_service.get(num_elements: 1) }.to_not raise_error
+    end
   end
-
 end
