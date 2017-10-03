@@ -1,39 +1,43 @@
 class AppnexusApi::Resource
 
-  attr_reader :dbg_info
+  attr_reader :dbg_info, :raw_json
 
   def initialize(json, service, dbg_info = nil)
-    @json = json
+    @raw_json = json
     @service = service
     @dbg_info = dbg_info
   end
 
-  def update(route_params={}, body_params={})
-    resource = @service.update(id, route_params, body_params)
-    @json = resource.raw_json
+  def update(route_params = {}, body_params = {})
+    @raw_json = @service.update(id, route_params, body_params).raw_json
     self
   end
 
-  def delete(route_params={})
+  # If you have modified the @raw_json hash in place, you can just do resource.save
+  def save
+    @service.update(id, {}, @raw_json).raw_json
+    self
+  end
+
+  def delete(route_params = {})
     @service.delete(id, route_params)
   end
 
-  def raw_json
-    @json
-  end
-
   def method_missing(sym, *args, &block)
-    if @json.respond_to?(sym)
-      @json.send(sym, *args, &block)
-    elsif @json.has_key?(sym.to_s)
-      return @json[sym.to_s]
+    if @raw_json.respond_to?(sym)
+      @raw_json.send(sym, *args, &block)
+    elsif @raw_json.key?(sym.to_s)
+      @raw_json[sym.to_s]
     else
       super(sym, *args, &block)
     end
   end
 
-  def to_s
-    @json.inspect
+  def respond_to_missing?(method_name, include_private = false)
+    @raw_json.respond_to?(method_name) || @raw_json.key?(method_name.to_s) || super
   end
 
+  def to_s
+    @raw_json.inspect
+  end
 end

@@ -1,0 +1,213 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-test.appnexus.com/auth
+    body:
+      encoding: UTF-8
+      string: '{"auth":{"username":"<APPNEXUS_USERNAME>","password":"<APPNEXUS_PASSWORD>"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '699'
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 13 Feb 2017 10:44:43 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A58a18e1cdbba5%3Anym2; Path=/
+      X-Route:
+      - "/auth"
+      X-Route-Time:
+      - '1401'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","token":"hbapi:171678:58a18e1cdbba5:nym2","dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","parent_dbg_info":{"instance":"01.api.test104169.nym2","slave_hit":false,"db":"master","awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"fd4d53cf-d98b-551c-b92f-151974bb83a5","warnings":[],"time":805.34601211548,"start_microtime":1486982683.7509,"version":"1.17","output_term":"not_found"},"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"91321b7c-f000-5189-9b8e-33c29c07de20","warnings":[],"time":1388.9429569244,"start_microtime":1486982683.7276,"version":"1.17.202","slave_lag":1464225,"output_term":"not_found"}}}'
+    http_version:
+  recorded_at: Mon, 13 Feb 2017 10:44:43 GMT
+- request:
+    method: get
+    uri: https://api-test.appnexus.com/siphon?num_elements=100&siphon_name=standard_feed&start_element=0&updated_since=2017_02_13_02
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:58a18e1cdbba5:nym2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0;no-cache
+      Content-Length:
+      - '1747'
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 13 Feb 2017 10:44:45 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A58a18e1cdbba5%3Anym2; Path=/
+      X-Count-Read:
+      - user:5,member:3,serviceHostUser:1,serviceHostMember:1,hostUser:3,hostMember:3,ip:0
+      X-Count-Write:
+      - user:0,member:0,serviceHostUser:0,serviceHostMember:0,hostUser:0,hostMember:0,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/siphon"
+      X-Route-Time:
+      - '63'
+    body:
+      encoding: UTF-8
+      string: '{"response":{"status":"OK","count":7,"siphons":[{"name":"standard_feed","hour":"2017_02_13_00","timestamp":"20170213020905","splits":[{"part":"0","status":"new","checksum":"cd9006d3382e10588c2efde501f1b115"}]}],"dbg_info":{"instance":"01.hbapi.test104169.nym2","slave_hit":false,"db":"master","user::reads":5,"user::read_limit":1000,"user::read_limit_seconds":60,"user::writes":0,"user::write_limit":1000,"user::write_limit_seconds":60,"reads":3,"read_limit":1000,"read_limit_seconds":60,"writes":0,"write_limit":1000,"write_limit_seconds":60,"awesomesauce_cache_used":false,"count_cache_used":false,"uuid":"33bfe6b3-111f-543d-b500-feaac5fe4aba","warnings":[],"time":53.074836730957,"start_microtime":1486982685.5887,"version":"1.17.202","slave_miss":"no_slaves_found","slave_lag":1464225,"member_last_modified_age":498,"output_term":"not_found"}}}'
+    http_version:
+  recorded_at: Mon, 13 Feb 2017 10:44:43 GMT
+- request:
+    method: get
+    uri: https://api-test.appnexus.com/siphon-download?hour=2017_02_13_00&siphon_name=standard_feed&split_part=0&timestamp=20170213020905
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - hbapi:171678:58a18e1cdbba5:nym2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Content-Length:
+      - '0'
+      Content-Type:
+      - text/html; charset=UTF-8
+      Date:
+      - Mon, 13 Feb 2017 10:44:46 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Location:
+      - http://data-api-client-testing-even.envnxs.com/siphon-download/p4G75fF1wAzrSMiJ01jDEvYSrsMemSmOEFRseHNI
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Set-Cookie:
+      - HBFAPI_SESSID=hbapi%3A171678%3A58a18e1cdbba5%3Anym2; Path=/
+      X-Count-Read:
+      - user:6,member:4,serviceHostUser:1,serviceHostMember:1,hostUser:4,hostMember:4,ip:0
+      X-Count-Write:
+      - user:0,member:0,serviceHostUser:0,serviceHostMember:0,hostUser:0,hostMember:0,ip:0
+      X-Ratelimit-Read:
+      - '1000'
+      X-Ratelimit-Service:
+      - 1000-Default
+      X-Ratelimit-System:
+      - 1000-Default
+      X-Ratelimit-Write:
+      - '1000'
+      X-Route:
+      - "/siphon-download"
+      X-Route-Time:
+      - '234'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Mon, 13 Feb 2017 10:44:44 GMT
+- request:
+    method: get
+    uri: http://data-api-client-testing-even.envnxs.com/siphon-download/p4G75fF1wAzrSMiJ01jDEvYSrsMemSmOEFRseHNI
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 13 Feb 2017 10:44:46 GMT
+      Content-Disposition:
+      - filename=standard_feed_2017_02_13_00_20170213020905_0.csv.gz
+      Content-Length:
+      - '690'
+      Content-Type:
+      - application/octet-stream
+      Server:
+      - Jetty(7.6.2.v20120308)
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA62U224TMRCGr4en4AW8naM90zvUigtUFQlaIXGX5iAqqBI1
+        RRVvz+xmA2nSStA2UeLfXq/t+f3NMFGtwoahpGYk3oCRWkEuJG8Rj7UdU4Vi
+        IIiQE4EA4fpmBS1b7FAjYhjcylEwaMeE+ckRiUH0rxaCaq5OhhzYqpt4BVLv
+        mnbSMfPfDsLlZzi5AKoMnm9nKzW3cKx5yqjZnF+encH98v7bfDLrpssb6Lds
+        QeOTf/jL8+J4zFFommBhgQyhbdiZxVktG9QmGYg5ozCBGDO5eO9FLuAilJHn
+        eMa0s+KD78F+AKsf07FruC/wUNjTj3rLTocfbQf+hgqbK2AopfRXkf8bC2Cc
+        5dUmEyEtmlwUZcUSPNUSE5FKbY5XOAfDvAkXEoLdxfHAWPj5oLfZcHvONw2j
+        Wa4VjaMqtaq6hx7pMcnT6BmTRhvQG2UKVQ1J9CxGV3iLHoMBSdNGqq2pVm/B
+        LglMgqqR5NXO6oMuwsk7+HgOxPnqAGCCbJYp4gii7s4jgPf33c319Ha5Xi7u
+        egyP1nfL2/nRZLVaH8WXr6fnJ5/ef5CLC6iR0WK8Hp3ah1bTx2ysVa45kLlV
+        NfNEwtKNmmJwqWVecPTzM+zn0Jk274lHEDR+GZ2y5cU72srRZtI6neviquhs
+        1oqi1OI8nZYZYU043Rc668NjyUAPcfw/PhlbrtOw1uYDLOZ7fIodC/d8NnaI
+        fTwlq5zwYPwoe05REh3rkEdbVHfwVFfLzbLYeDQKDc91E0XFjli7vNbd7h86
+        pW3oVJKaxamHk4kzQTeRrb//Ws03tTEiC5i/Hny9aYfwWdM0ZISPh0nUSZ94
+        mV7QB/Uc+NLEPfEIYVJfCb6d2jiSZBmYLfL+p25ctC2yLM7Vi7erOZsSLmjI
+        LVF8MXu/AU8TTkuXBwAA
+    http_version:
+  recorded_at: Mon, 13 Feb 2017 10:44:44 GMT
+recorded_with: VCR 3.0.3

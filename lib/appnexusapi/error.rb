@@ -1,5 +1,7 @@
 module AppnexusApi
   class Error < StandardError; end
+
+  class BadChecksumException < Error; end
   class BadRequest < Error; end
   class Unauthorized < Error; end
   class Forbidden < Error; end
@@ -12,4 +14,5 @@ module AppnexusApi
   class ServiceUnavailable < Error; end
   class InvalidJson < Error; end
   class Timeout < Error; end
+  class RateLimitExceeded < Error; end
 end

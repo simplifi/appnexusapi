@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe AppnexusApi::PlacementService do
-
   include_context 'with a publisher'
 
   let(:placement_service) { described_class.new(connection) }

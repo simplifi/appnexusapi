@@ -1,15 +1,26 @@
-require "faraday"
-require "appnexusapi/version"
-require "appnexusapi/error"
+require 'faraday'
+require 'faraday_middleware'
+require 'logger'
+require 'retriable'
+
+require 'appnexusapi/configuration'
+require 'appnexusapi/version'
+require 'appnexusapi/error'
+require 'appnexusapi/resource'
+require 'appnexusapi/service'
+require 'appnexusapi/read_only_service'
+require 'appnexusapi/connection'
+
+Dir.glob("#{File.join(File.dirname(__FILE__), 'appnexusapi', 'services')}/*.rb").each do |service_file|
+  require service_file
+end
 
 module AppnexusApi
-  autoload :Connection, "appnexusapi/connection"
-
-  dir = File.dirname(__FILE__) + "/appnexusapi"
-  files = Dir.glob(File.expand_path("{*resource,*service}.rb", dir)).map{|f| File.basename(f, '.rb')}
-  files.each do |file|
-    sym = file.capitalize.gsub(/(_(.))/) { |c| $2.upcase }.to_sym
-    autoload sym, "appnexusapi/#{file}"
+  def self.config
+    @configuration ||= Configuration.new
   end
 
+  def self.configure
+    yield(config)
+  end
 end

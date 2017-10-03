@@ -16,7 +16,6 @@ module SpecWithConnection
 
   let(:test_logger) { Logger.new('./log/test.log') }
   let(:connection) { AppnexusApi::Connection.new(connection_params.merge('logger' => test_logger)) }
-  let(:connection_with_null_logger) { AppnexusApi::Connection.new(connection_params) }
   let(:connection_params) do
     {
       'username' => ENV['APPNEXUS_USERNAME'] || 'user',
@@ -54,8 +53,8 @@ VCR.configure do |c|
   c.hook_into :webmock
 
   c.allow_http_connections_when_no_cassette = true
-  c.filter_sensitive_data('<APPNEXUS_USERNAME>')        { ENV['APPNEXUS_USERNAME'] || DEFAULT_SPEC_USERNAME }
-  c.filter_sensitive_data('<APPNEXUS_PASSWORD>')        { ENV['APPNEXUS_PASSWORD'] || DEFAULT_SPEC_PASSWORD }
+  c.filter_sensitive_data('<APPNEXUS_USERNAME>') { ENV['APPNEXUS_USERNAME'] || DEFAULT_SPEC_USERNAME }
+  c.filter_sensitive_data('<APPNEXUS_PASSWORD>') { ENV['APPNEXUS_PASSWORD'] || DEFAULT_SPEC_PASSWORD }
 
   c.default_cassette_options = {
     match_requests_on: [:method, :uri, :body]

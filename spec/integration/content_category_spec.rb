@@ -15,6 +15,10 @@ describe AppnexusApi::ContentCategoryService do
       gotten.update({}, name: name_update)
       expect(ccs.get(id: created.id).first.name).to eq(name_update)
 
+      gotten.raw_json[:name] = name
+      gotten.save
+      expect(ccs.get(id: created.id).first.name).to eq(name)
+
       gotten.delete({})
       expect(ccs.get(id: created.id)).to be_nil
     end
