@@ -1,6 +1,10 @@
 # Appnexus API Wrapper
 
-An unofficial Ruby API Wrapper for the Appnexus Service APIs.
+An unofficial Ruby API Wrapper for the Appnexus Service Console APIs.
+
+_If you use the Appnexus Service Impression Bus API's, you may be more interested in this project:
+https://github.com/simplifi/appnexusapi-impbus_
+
 
 ## Installation
 
